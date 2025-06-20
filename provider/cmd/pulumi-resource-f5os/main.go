@@ -15,12 +15,12 @@
 package main
 
 import (
+	"context"
 	_ "embed"
 
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	f5os "github.com/pulumi/pulumi-f5os/provider"
-	"github.com/pulumi/pulumi-f5os/provider/pkg/version"
 )
 
 //go:embed schema.json
@@ -28,5 +28,6 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("f5os", version.Version, f5os.Provider(), pulumiSchema)
+	tfbridge.Main(context.Background(), "f5os", f5os.Provider(),
+		tfbridge.ProviderMetadata{PackageSchema: pulumiSchema})
 }

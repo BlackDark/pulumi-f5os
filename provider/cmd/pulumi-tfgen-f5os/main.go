@@ -15,13 +15,12 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 
 	f5os "github.com/pulumi/pulumi-f5os/provider"
-	"github.com/pulumi/pulumi-f5os/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("f5os", version.Version, f5os.Provider())
+	tfgen.Main("f5os", f5os.Provider())
 }

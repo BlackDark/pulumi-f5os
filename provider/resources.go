@@ -20,11 +20,11 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
+	f5os "github.com/BlackDark/terraform-provider-f5os/f5os" // Import the upstream provider
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	f5os "github.com/BlackDark/terraform-provider-f5os/provider" // Import the upstream provider
 
 	"github.com/pulumi/pulumi-f5os/provider/pkg/version"
 )
@@ -105,7 +105,7 @@ func Provider() tfbridge.ProviderInfo {
 		// - "github.com/hashicorp/terraform-plugin-framework/provider".Provider (for plugin-framework)
 		//
 		//nolint:lll
-		P: shimv2.NewProvider(f5os.New(version.Version)()),
+		P: pfbridge.ShimProvider(f5os.New(version.Version)()),
 
 		Name:    "f5os",
 		Version: version.Version,
