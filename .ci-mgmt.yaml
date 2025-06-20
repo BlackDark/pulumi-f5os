@@ -1,5 +1,5 @@
 # REQUIRED: provider is the name of the provider without the pulumi-prefix e.g. "aws".
-provider: xyz
+provider: f5os
 
 # The name of the GitHub organization or username the repository lives in. Defaults to 'pulumi'
 organization: pulumi
