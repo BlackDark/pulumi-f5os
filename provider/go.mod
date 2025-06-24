@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-f5os/provider
+module github.com/BlackDark/pulumi-f5os/provider
 
 go 1.23.0
 

@@ -27,7 +27,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 
-	"github.com/pulumi/pulumi-f5os/provider/pkg/version"
+	"github.com/BlackDark/pulumi-f5os/provider/pkg/version"
 )
 
 // all of the token components used below.
@@ -115,7 +115,7 @@ func Provider() tfbridge.ProviderInfo {
 		DisplayName: "",
 		// Change this to your personal name (or a company name) that you would like to be shown in
 		// the Pulumi Registry if this package is published there.
-		Publisher: "Pulumi",
+		Publisher: "BlackDark",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -132,11 +132,11 @@ func Provider() tfbridge.ProviderInfo {
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
 		Keywords:   []string{"f5os", "category/cloud"},
 		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumi/pulumi-f5os",
+		Homepage:   "https://github.com/BlackDark/pulumi-f5os",
+		Repository: "https://github.com/BlackDark/pulumi-f5os",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:    "",
+		GitHubOrg:    "BlackDark",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
@@ -170,7 +170,7 @@ func Provider() tfbridge.ProviderInfo {
 		Golang: &tfbridge.GolangInfo{
 			// Set where the SDK is going to be published to.
 			ImportBasePath: path.Join(
-				"github.com/pulumi/pulumi-f5os/sdk/",
+				"github.com/BlackDark/pulumi-f5os/sdk/",
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,

@@ -2,7 +2,7 @@
 provider: f5os
 
 # The name of the GitHub organization or username the repository lives in. Defaults to 'pulumi'
-organization: pulumi
+organization: BlackDark
 
 # The external template only includes workflows relevant for non-Pulumi managed providers.
 template: external-bridged-provider
