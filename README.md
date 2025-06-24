@@ -33,7 +33,7 @@ pip install pulumi_f5os
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/pulumi/pulumi-f5os/sdk/go/...
+go get github.com/BlackDark/pulumi-f5os/sdk/go/...
 ```
 
 ### .NET

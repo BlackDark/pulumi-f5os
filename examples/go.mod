@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-f5os/examples
+module github.com/BlackDark/pulumi-f5os/examples
 
 go 1.23.0
 

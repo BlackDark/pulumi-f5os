@@ -2,20 +2,17 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
-import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
- * The provider type for the xyz package. By default, resources use package-wide configuration
+ * The provider type for the f5os package. By default, resources use package-wide configuration
  * settings, however an explicit `Provider` instance may be created and passed during resource
  * construction to achieve fine-grained programmatic control over provider settings. See the
  * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
  */
 export class Provider extends pulumi.ProviderResource {
     /** @internal */
-    public static readonly __pulumiType = 'xyz';
+    public static readonly __pulumiType = 'f5os';
 
     /**
      * Returns true if the given object is an instance of Provider.  This is designed to work even
@@ -28,6 +25,20 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
+    /**
+     * URI/Host details for F5os Device,can be provided via `F5OS_HOST` environment variable.
+     */
+    public readonly host!: pulumi.Output<string | undefined>;
+    /**
+     * Password for F5os Device,can be provided via `F5OS_PASSWORD` environment variable.
+     */
+    public readonly password!: pulumi.Output<string | undefined>;
+    /**
+     * Username for F5os Device,can be provided via `F5OS_USERNAME` environment variable.User provided here need to have
+     * required permission as per
+     * [UserManagement](https://techdocs.f5.com/en-us/f5os-a-1-4-0/f5-rseries-systems-administration-configuration/title-user-mgmt.html)
+     */
+    public readonly username!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -40,9 +51,16 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["disableTlsVerify"] = pulumi.output(args ? args.disableTlsVerify : undefined).apply(JSON.stringify);
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["port"] = pulumi.output(args ? args.port : undefined).apply(JSON.stringify);
+            resourceInputs["teemDisable"] = pulumi.output(args ? args.teemDisable : undefined).apply(JSON.stringify);
+            resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 
@@ -50,7 +68,7 @@ export class Provider extends pulumi.ProviderResource {
      * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
      */
     terraformConfig(): pulumi.Output<Provider.TerraformConfigResult> {
-        return pulumi.runtime.call("pulumi:providers:xyz/terraformConfig", {
+        return pulumi.runtime.call("pulumi:providers:f5os/terraformConfig", {
             "__self__": this,
         }, this);
     }
@@ -61,9 +79,36 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * A region which should be used.
+     * `disableTlsVerify` controls whether a client verifies the server's certificate chain and host name. default it is set to
+     * `true`. If `disableTlsVerify` is true, crypto/tls accepts any certificate presented by the server and any host name in
+     * that certificate. In this mode, TLS is susceptible to machine-in-the-middle attacks unless custom verification is used.
+     * can be provided by `DISABLE_TLS_VERIFY` environment variable. > **NOTE** If it is set to `false`, certificate/ca
+     * certificates should be added to `trusted store` of host where we are running this provider.
      */
-    region?: pulumi.Input<enums.region.Region>;
+    disableTlsVerify?: pulumi.Input<boolean>;
+    /**
+     * URI/Host details for F5os Device,can be provided via `F5OS_HOST` environment variable.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Password for F5os Device,can be provided via `F5OS_PASSWORD` environment variable.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Port Number to be used to make API calls to HOST
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * If this flag set to true,sending telemetry data to TEEM will be disabled,can be provided via `TEEM_DISABLE` environment
+     * variable.
+     */
+    teemDisable?: pulumi.Input<boolean>;
+    /**
+     * Username for F5os Device,can be provided via `F5OS_USERNAME` environment variable.User provided here need to have
+     * required permission as per
+     * [UserManagement](https://techdocs.f5.com/en-us/f5os-a-1-4-0/f5-rseries-systems-administration-configuration/title-user-mgmt.html)
+     */
+    username?: pulumi.Input<string>;
 }
 
 export namespace Provider {

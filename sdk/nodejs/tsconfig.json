@@ -15,16 +15,29 @@
     "files": [
         "config/index.ts",
         "config/vars.ts",
-        "getDataSource.ts",
+        "configBackup.ts",
+        "dns.ts",
+        "getDeviceInfo.ts",
+        "getTenantImage.ts",
         "index.ts",
+        "interface.ts",
+        "lag.ts",
+        "license.ts",
+        "partition.ts",
+        "partitionChangePassword.ts",
+        "primarykey.ts",
         "provider.ts",
         "region/index.ts",
-        "resource.ts",
+        "system.ts",
+        "tenant.ts",
+        "tenantImage.ts",
+        "tlsCertKey.ts",
         "types/enums/index.ts",
         "types/enums/region/index.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "vlan.ts"
     ]
 }

@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Xyz
+namespace Pulumi.F5os
 {
     public static class Config
     {
@@ -30,16 +30,73 @@ namespace Pulumi.Xyz
             }
         }
 
-        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("xyz");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("f5os");
 
-        private static readonly __Value<Pulumi.Xyz.Region.Region?> _region = new __Value<Pulumi.Xyz.Region.Region?>(() => __config.GetObject<Pulumi.Xyz.Region.Region>("region"));
+        private static readonly __Value<bool?> _disableTlsVerify = new __Value<bool?>(() => __config.GetBoolean("disableTlsVerify"));
         /// <summary>
-        /// A region which should be used.
+        /// `disable_tls_verify` controls whether a client verifies the server's certificate chain and host name. default it is set
+        /// to `true`. If `disable_tls_verify` is true, crypto/tls accepts any certificate presented by the server and any host name
+        /// in that certificate. In this mode, TLS is susceptible to machine-in-the-middle attacks unless custom verification is
+        /// used. can be provided by `DISABLE_TLS_VERIFY` environment variable. &gt; **NOTE** If it is set to `false`, certificate/ca
+        /// certificates should be added to `trusted store` of host where we are running this provider.
         /// </summary>
-        public static Pulumi.Xyz.Region.Region? Region
+        public static bool? DisableTlsVerify
         {
-            get => _region.Get();
-            set => _region.Set(value);
+            get => _disableTlsVerify.Get();
+            set => _disableTlsVerify.Set(value);
+        }
+
+        private static readonly __Value<string?> _host = new __Value<string?>(() => __config.Get("host"));
+        /// <summary>
+        /// URI/Host details for F5os Device,can be provided via `F5OS_HOST` environment variable.
+        /// </summary>
+        public static string? Host
+        {
+            get => _host.Get();
+            set => _host.Set(value);
+        }
+
+        private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
+        /// <summary>
+        /// Password for F5os Device,can be provided via `F5OS_PASSWORD` environment variable.
+        /// </summary>
+        public static string? Password
+        {
+            get => _password.Get();
+            set => _password.Set(value);
+        }
+
+        private static readonly __Value<int?> _port = new __Value<int?>(() => __config.GetInt32("port"));
+        /// <summary>
+        /// Port Number to be used to make API calls to HOST
+        /// </summary>
+        public static int? Port
+        {
+            get => _port.Get();
+            set => _port.Set(value);
+        }
+
+        private static readonly __Value<bool?> _teemDisable = new __Value<bool?>(() => __config.GetBoolean("teemDisable"));
+        /// <summary>
+        /// If this flag set to true,sending telemetry data to TEEM will be disabled,can be provided via `TEEM_DISABLE` environment
+        /// variable.
+        /// </summary>
+        public static bool? TeemDisable
+        {
+            get => _teemDisable.Get();
+            set => _teemDisable.Set(value);
+        }
+
+        private static readonly __Value<string?> _username = new __Value<string?>(() => __config.Get("username"));
+        /// <summary>
+        /// Username for F5os Device,can be provided via `F5OS_USERNAME` environment variable.User provided here need to have
+        /// required permission as per
+        /// [UserManagement](https://techdocs.f5.com/en-us/f5os-a-1-4-0/f5-rseries-systems-administration-configuration/title-user-mgmt.html)
+        /// </summary>
+        public static string? Username
+        {
+            get => _username.Get();
+            set => _username.Set(value);
         }
 
     }

@@ -21,7 +21,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
-	f5os "github.com/pulumi/pulumi-f5os/provider"
+	f5os "github.com/BlackDark/pulumi-f5os/provider"
 )
 
 //go:embed schema.json

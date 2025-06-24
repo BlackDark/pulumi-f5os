@@ -5,11 +5,11 @@
         "f5os",
         "category/cloud"
     ],
-    "homepage": "https://www.pulumi.com",
+    "homepage": "https://github.com/BlackDark/pulumi-f5os",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`f5os` Terraform Provider](https://github.com/terraform-providers/terraform-provider-f5os).",
-    "repository": "https://github.com/pulumi/pulumi-f5os",
-    "publisher": "Pulumi",
+    "attribution": "This Pulumi package is based on the [`f5os` Terraform Provider](https://github.com/BlackDark/terraform-provider-f5os).",
+    "repository": "https://github.com/BlackDark/pulumi-f5os",
+    "publisher": "BlackDark",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
@@ -22,20 +22,20 @@
             "respectSchemaVersion": true
         },
         "go": {
-            "importBasePath": "github.com/pulumi/pulumi-f5os/sdk/go/f5os",
+            "importBasePath": "github.com/BlackDark/pulumi-f5os/sdk/go/f5os",
             "generateResourceContainerTypes": true,
             "generateExtraInputTypes": true,
             "respectSchemaVersion": true
         },
         "nodejs": {
             "packageDescription": "A Pulumi package for creating and managing f5os cloud resources.",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-f5os)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-f5os` repo](https://github.com/pulumi/pulumi-f5os/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-f5os` repo](https://github.com/terraform-providers/terraform-provider-f5os/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/BlackDark/terraform-provider-f5os)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-f5os` repo](https://github.com/BlackDark/pulumi-f5os/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-f5os` repo](https://github.com/BlackDark/terraform-provider-f5os/issues).",
             "compatibility": "tfbridge20",
             "disableUnionOutputTypes": true,
             "respectSchemaVersion": true
         },
         "python": {
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-f5os)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-f5os` repo](https://github.com/pulumi/pulumi-f5os/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-f5os` repo](https://github.com/terraform-providers/terraform-provider-f5os/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/BlackDark/terraform-provider-f5os)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-f5os` repo](https://github.com/BlackDark/pulumi-f5os/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-f5os` repo](https://github.com/BlackDark/terraform-provider-f5os/issues).",
             "compatibility": "tfbridge20",
             "respectSchemaVersion": true,
             "pyproject": {
@@ -316,6 +316,7 @@
     },
     "resources": {
         "f5os:index/configBackup:ConfigBackup": {
+            "description": "Resource used to manage F5OS config backup\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\nconst test = new f5os.ConfigBackup(\"test\", {\n    name: \"test_cfg_backup\",\n    remoteHost: \"1.2.3.4\",\n    remoteUser: \"corpuser\",\n    remotePassword: \"password\",\n    remotePath: \"/upload/test_cfg_backup\",\n    protocol: \"https\",\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\ntest = f5os.ConfigBackup(\"test\",\n    name=\"test_cfg_backup\",\n    remote_host=\"1.2.3.4\",\n    remote_user=\"corpuser\",\n    remote_password=\"password\",\n    remote_path=\"/upload/test_cfg_backup\",\n    protocol=\"https\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new F5os.ConfigBackup(\"test\", new()\n    {\n        Name = \"test_cfg_backup\",\n        RemoteHost = \"1.2.3.4\",\n        RemoteUser = \"corpuser\",\n        RemotePassword = \"password\",\n        RemotePath = \"/upload/test_cfg_backup\",\n        Protocol = \"https\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := f5os.NewConfigBackup(ctx, \"test\", \u0026f5os.ConfigBackupArgs{\n\t\t\tName:           pulumi.String(\"test_cfg_backup\"),\n\t\t\tRemoteHost:     pulumi.String(\"1.2.3.4\"),\n\t\t\tRemoteUser:     pulumi.String(\"corpuser\"),\n\t\t\tRemotePassword: pulumi.String(\"password\"),\n\t\t\tRemotePath:     pulumi.String(\"/upload/test_cfg_backup\"),\n\t\t\tProtocol:       pulumi.String(\"https\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.ConfigBackup;\nimport com.pulumi.f5os.ConfigBackupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new ConfigBackup(\"test\", ConfigBackupArgs.builder()\n            .name(\"test_cfg_backup\")\n            .remoteHost(\"1.2.3.4\")\n            .remoteUser(\"corpuser\")\n            .remotePassword(\"password\")\n            .remotePath(\"/upload/test_cfg_backup\")\n            .protocol(\"https\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: f5os:ConfigBackup\n    properties:\n      name: test_cfg_backup\n      remoteHost: 1.2.3.4\n      remoteUser: corpuser\n      remotePassword: password\n      remotePath: /upload/test_cfg_backup\n      protocol: https\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "name": {
                     "type": "string",
@@ -431,6 +432,7 @@
             }
         },
         "f5os:index/dns:Dns": {
+            "description": "Resource used to configure DNS settings (servers and domains) on F5OS systems (VELOS or rSeries).\n\n\u003e **NOTE:** The `f5os.Dns` resource updates DNS servers and search domains on the F5OS platforms using Open API\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\n// Manages DNS servers and search domains on F5OS platforms\nconst test = new f5os.Dns(\"test\", {\n    dnsServers: [\"8.8.8.8\"],\n    dnsDomains: [\"internal.domain\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\n# Manages DNS servers and search domains on F5OS platforms\ntest = f5os.Dns(\"test\",\n    dns_servers=[\"8.8.8.8\"],\n    dns_domains=[\"internal.domain\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Manages DNS servers and search domains on F5OS platforms\n    var test = new F5os.Dns(\"test\", new()\n    {\n        DnsServers = new[]\n        {\n            \"8.8.8.8\",\n        },\n        DnsDomains = new[]\n        {\n            \"internal.domain\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Manages DNS servers and search domains on F5OS platforms\n\t\t_, err := f5os.NewDns(ctx, \"test\", \u0026f5os.DnsArgs{\n\t\t\tDnsServers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"8.8.8.8\"),\n\t\t\t},\n\t\t\tDnsDomains: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"internal.domain\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.Dns;\nimport com.pulumi.f5os.DnsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Manages DNS servers and search domains on F5OS platforms\n        var test = new Dns(\"test\", DnsArgs.builder()\n            .dnsServers(\"8.8.8.8\")\n            .dnsDomains(\"internal.domain\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Manages DNS servers and search domains on F5OS platforms\n  test:\n    type: f5os:Dns\n    properties:\n      dnsServers:\n        - 8.8.8.8\n      dnsDomains:\n        - internal.domain\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "dnsDomains": {
                     "type": "array",
@@ -492,6 +494,7 @@
             }
         },
         "f5os:index/interface:Interface": {
+            "description": "Resource to Manage network interfaces on F5OS systems like VELOS chassis partitions or rSeries platforms\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\nconst testInterface = new f5os.Interface(\"test_interface\", {\n    enabled: true,\n    name: \"1.0\",\n    nativeVlan: 5,\n    trunkVlans: [\n        1,\n        2,\n        3,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\ntest_interface = f5os.Interface(\"test_interface\",\n    enabled=True,\n    name=\"1.0\",\n    native_vlan=5,\n    trunk_vlans=[\n        1,\n        2,\n        3,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testInterface = new F5os.Interface(\"test_interface\", new()\n    {\n        Enabled = true,\n        Name = \"1.0\",\n        NativeVlan = 5,\n        TrunkVlans = new[]\n        {\n            1,\n            2,\n            3,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := f5os.NewInterface(ctx, \"test_interface\", \u0026f5os.InterfaceArgs{\n\t\t\tEnabled:    pulumi.Bool(true),\n\t\t\tName:       pulumi.String(\"1.0\"),\n\t\t\tNativeVlan: pulumi.Int(5),\n\t\t\tTrunkVlans: pulumi.IntArray{\n\t\t\t\tpulumi.Int(1),\n\t\t\t\tpulumi.Int(2),\n\t\t\t\tpulumi.Int(3),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.Interface;\nimport com.pulumi.f5os.InterfaceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testInterface = new Interface(\"testInterface\", InterfaceArgs.builder()\n            .enabled(true)\n            .name(\"1.0\")\n            .nativeVlan(5)\n            .trunkVlans(            \n                1,\n                2,\n                3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testInterface:\n    type: f5os:Interface\n    name: test_interface\n    properties:\n      enabled: true\n      name: '1.0'\n      nativeVlan: 5\n      trunkVlans:\n        - 1\n        - 2\n        - 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nInterface can be imported by specifying the Interface name\n\n```sh\n$ pulumi import f5os:index/interface:Interface test-import 1.0\n```\n\n",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -499,11 +502,11 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the interface to configure. For VELOS partitions blade/port format is required e.g. `1/1.0`\n"
+                    "description": "Name of the interface to configure.\nFor VELOS partitions blade/port format is required e.g. `1/1.0`\n"
                 },
                 "nativeVlan": {
                     "type": "integer",
-                    "description": "Configures the VLAN ID to associate with the interface. The `native_vlan` parameter is used for untagged traffic.\n"
+                    "description": "Configures the VLAN ID to associate with the interface.\nThe `native_vlan` parameter is used for untagged traffic.\n"
                 },
                 "status": {
                     "type": "string",
@@ -514,7 +517,7 @@
                     "items": {
                         "type": "integer"
                     },
-                    "description": "Configures multiple VLAN IDs to associate with the interface. The `trunk_vlans` parameter is used for tagged traffic\n"
+                    "description": "Configures multiple VLAN IDs to associate with the interface.\nThe `trunk_vlans` parameter is used for tagged traffic\n"
                 }
             },
             "required": [
@@ -529,18 +532,18 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the interface to configure. For VELOS partitions blade/port format is required e.g. `1/1.0`\n"
+                    "description": "Name of the interface to configure.\nFor VELOS partitions blade/port format is required e.g. `1/1.0`\n"
                 },
                 "nativeVlan": {
                     "type": "integer",
-                    "description": "Configures the VLAN ID to associate with the interface. The `native_vlan` parameter is used for untagged traffic.\n"
+                    "description": "Configures the VLAN ID to associate with the interface.\nThe `native_vlan` parameter is used for untagged traffic.\n"
                 },
                 "trunkVlans": {
                     "type": "array",
                     "items": {
                         "type": "integer"
                     },
-                    "description": "Configures multiple VLAN IDs to associate with the interface. The `trunk_vlans` parameter is used for tagged traffic\n"
+                    "description": "Configures multiple VLAN IDs to associate with the interface.\nThe `trunk_vlans` parameter is used for tagged traffic\n"
                 }
             },
             "stateInputs": {
@@ -552,11 +555,11 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the interface to configure. For VELOS partitions blade/port format is required e.g. `1/1.0`\n"
+                        "description": "Name of the interface to configure.\nFor VELOS partitions blade/port format is required e.g. `1/1.0`\n"
                     },
                     "nativeVlan": {
                         "type": "integer",
-                        "description": "Configures the VLAN ID to associate with the interface. The `native_vlan` parameter is used for untagged traffic.\n"
+                        "description": "Configures the VLAN ID to associate with the interface.\nThe `native_vlan` parameter is used for untagged traffic.\n"
                     },
                     "status": {
                         "type": "string",
@@ -567,13 +570,14 @@
                         "items": {
                             "type": "integer"
                         },
-                        "description": "Configures multiple VLAN IDs to associate with the interface. The `trunk_vlans` parameter is used for tagged traffic\n"
+                        "description": "Configures multiple VLAN IDs to associate with the interface.\nThe `trunk_vlans` parameter is used for tagged traffic\n"
                     }
                 },
                 "type": "object"
             }
         },
         "f5os:index/lag:Lag": {
+            "description": "Resource to Manage network Link Aggregation Group (LAG) interfaces on F5OS systems like VELOS chassis partitions or rSeries platforms\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\nconst testLag = new f5os.Lag(\"test_lag\", {\n    name: \"test_lag\",\n    members: [\"1.0\"],\n    nativeVlan: 5,\n    trunkVlans: [\n        1,\n        2,\n        3,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\ntest_lag = f5os.Lag(\"test_lag\",\n    name=\"test_lag\",\n    members=[\"1.0\"],\n    native_vlan=5,\n    trunk_vlans=[\n        1,\n        2,\n        3,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testLag = new F5os.Lag(\"test_lag\", new()\n    {\n        Name = \"test_lag\",\n        Members = new[]\n        {\n            \"1.0\",\n        },\n        NativeVlan = 5,\n        TrunkVlans = new[]\n        {\n            1,\n            2,\n            3,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := f5os.NewLag(ctx, \"test_lag\", \u0026f5os.LagArgs{\n\t\t\tName: pulumi.String(\"test_lag\"),\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"1.0\"),\n\t\t\t},\n\t\t\tNativeVlan: pulumi.Int(5),\n\t\t\tTrunkVlans: pulumi.IntArray{\n\t\t\t\tpulumi.Int(1),\n\t\t\t\tpulumi.Int(2),\n\t\t\t\tpulumi.Int(3),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.Lag;\nimport com.pulumi.f5os.LagArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testLag = new Lag(\"testLag\", LagArgs.builder()\n            .name(\"test_lag\")\n            .members(\"1.0\")\n            .nativeVlan(5)\n            .trunkVlans(            \n                1,\n                2,\n                3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testLag:\n    type: f5os:Lag\n    name: test_lag\n    properties:\n      name: test_lag\n      members:\n        - '1.0'\n      nativeVlan: 5\n      trunkVlans:\n        - 1\n        - 2\n        - 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLAG Interface can be imported by specifying the LAG Interface name\n\n```sh\n$ pulumi import f5os:index/lag:Lag test-import test-lag\n```\n\n",
             "properties": {
                 "interval": {
                     "type": "string",
@@ -584,7 +588,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of physical interfaces that are members of the LAG. The members should be present on F5 platform and they shouldn't\nhave any VLANs attached to it\n"
+                    "description": "List of physical interfaces that are members of the LAG. The members should be present on F5 platform and they shouldn't have any VLANs attached to it\n"
                 },
                 "mode": {
                     "type": "string",
@@ -596,7 +600,7 @@
                 },
                 "nativeVlan": {
                     "type": "integer",
-                    "description": "Configures the VLAN ID to associate with LAG interface. The `native_vlan` parameter is used for untagged traffic.\n"
+                    "description": "Configures the VLAN ID to associate with LAG interface.\nThe `native_vlan` parameter is used for untagged traffic.\n"
                 },
                 "status": {
                     "type": "string",
@@ -607,7 +611,7 @@
                     "items": {
                         "type": "integer"
                     },
-                    "description": "Configures multiple VLAN IDs to associate with the LAG interface. The `trunk_vlans` parameter is used for tagged traffic\n"
+                    "description": "Configures multiple VLAN IDs to associate with the LAG interface.\nThe `trunk_vlans` parameter is used for tagged traffic\n"
                 }
             },
             "required": [
@@ -627,7 +631,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of physical interfaces that are members of the LAG. The members should be present on F5 platform and they shouldn't\nhave any VLANs attached to it\n"
+                    "description": "List of physical interfaces that are members of the LAG. The members should be present on F5 platform and they shouldn't have any VLANs attached to it\n"
                 },
                 "mode": {
                     "type": "string",
@@ -639,14 +643,14 @@
                 },
                 "nativeVlan": {
                     "type": "integer",
-                    "description": "Configures the VLAN ID to associate with LAG interface. The `native_vlan` parameter is used for untagged traffic.\n"
+                    "description": "Configures the VLAN ID to associate with LAG interface.\nThe `native_vlan` parameter is used for untagged traffic.\n"
                 },
                 "trunkVlans": {
                     "type": "array",
                     "items": {
                         "type": "integer"
                     },
-                    "description": "Configures multiple VLAN IDs to associate with the LAG interface. The `trunk_vlans` parameter is used for tagged traffic\n"
+                    "description": "Configures multiple VLAN IDs to associate with the LAG interface.\nThe `trunk_vlans` parameter is used for tagged traffic\n"
                 }
             },
             "stateInputs": {
@@ -661,7 +665,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of physical interfaces that are members of the LAG. The members should be present on F5 platform and they shouldn't\nhave any VLANs attached to it\n"
+                        "description": "List of physical interfaces that are members of the LAG. The members should be present on F5 platform and they shouldn't have any VLANs attached to it\n"
                     },
                     "mode": {
                         "type": "string",
@@ -673,7 +677,7 @@
                     },
                     "nativeVlan": {
                         "type": "integer",
-                        "description": "Configures the VLAN ID to associate with LAG interface. The `native_vlan` parameter is used for untagged traffic.\n"
+                        "description": "Configures the VLAN ID to associate with LAG interface.\nThe `native_vlan` parameter is used for untagged traffic.\n"
                     },
                     "status": {
                         "type": "string",
@@ -684,13 +688,14 @@
                         "items": {
                             "type": "integer"
                         },
-                        "description": "Configures multiple VLAN IDs to associate with the LAG interface. The `trunk_vlans` parameter is used for tagged traffic\n"
+                        "description": "Configures multiple VLAN IDs to associate with the LAG interface.\nThe `trunk_vlans` parameter is used for tagged traffic\n"
                     }
                 },
                 "type": "object"
             }
         },
         "f5os:index/license:License": {
+            "description": "Resource to manage license activation and deactivation.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\nconst dummyLicense = new f5os.License(\"dummy_license\", {\n    registrationKey: \"W9XXX-8YYYZ-8KKK7-7PPP2-ZZZZZZ\",\n    addonKeys: [\n        \"NNNWWWW-9PPPPKK\",\n        \"WWWWXXX-4ZZZYYY\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\ndummy_license = f5os.License(\"dummy_license\",\n    registration_key=\"W9XXX-8YYYZ-8KKK7-7PPP2-ZZZZZZ\",\n    addon_keys=[\n        \"NNNWWWW-9PPPPKK\",\n        \"WWWWXXX-4ZZZYYY\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dummyLicense = new F5os.License(\"dummy_license\", new()\n    {\n        RegistrationKey = \"W9XXX-8YYYZ-8KKK7-7PPP2-ZZZZZZ\",\n        AddonKeys = new[]\n        {\n            \"NNNWWWW-9PPPPKK\",\n            \"WWWWXXX-4ZZZYYY\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := f5os.NewLicense(ctx, \"dummy_license\", \u0026f5os.LicenseArgs{\n\t\t\tRegistrationKey: pulumi.String(\"W9XXX-8YYYZ-8KKK7-7PPP2-ZZZZZZ\"),\n\t\t\tAddonKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"NNNWWWW-9PPPPKK\"),\n\t\t\t\tpulumi.String(\"WWWWXXX-4ZZZYYY\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.License;\nimport com.pulumi.f5os.LicenseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var dummyLicense = new License(\"dummyLicense\", LicenseArgs.builder()\n            .registrationKey(\"W9XXX-8YYYZ-8KKK7-7PPP2-ZZZZZZ\")\n            .addonKeys(            \n                \"NNNWWWW-9PPPPKK\",\n                \"WWWWXXX-4ZZZYYY\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  dummyLicense:\n    type: f5os:License\n    name: dummy_license\n    properties:\n      registrationKey: W9XXX-8YYYZ-8KKK7-7PPP2-ZZZZZZ\n      addonKeys:\n        - NNNWWWW-9PPPPKK\n        - WWWWXXX-4ZZZYYY\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "addonKeys": {
                     "type": "array",
@@ -760,10 +765,11 @@
             }
         },
         "f5os:index/partition:Partition": {
+            "description": "Resource used for Manage VELOS chassis partition\n\n\u003e **NOTE** `f5os.Partition` resource is used with Velos Chassis controller only, More info on [chassis partition](https://techdocs.f5.com/en-us/velos-1-5-0/velos-systems-administration-configuration/title-partition-mgmt.html#about-partitions).\nProvider `f5os` credentials will be chassis controller `host`,`username` and `password`\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\n// Manages F5OS partition\nconst velos_part = new f5os.Partition(\"velos-part\", {\n    name: \"TerraformPartition\",\n    osVersion: \"1.3.1-5968\",\n    ipv4MgmtAddress: \"10.144.140.125/24\",\n    ipv4MgmtGateway: \"10.144.140.253\",\n    ipv6MgmtAddress: \"2001::1/64\",\n    ipv6MgmtGateway: \"2001::\",\n    slots: [\n        1,\n        2,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\n# Manages F5OS partition\nvelos_part = f5os.Partition(\"velos-part\",\n    name=\"TerraformPartition\",\n    os_version=\"1.3.1-5968\",\n    ipv4_mgmt_address=\"10.144.140.125/24\",\n    ipv4_mgmt_gateway=\"10.144.140.253\",\n    ipv6_mgmt_address=\"2001::1/64\",\n    ipv6_mgmt_gateway=\"2001::\",\n    slots=[\n        1,\n        2,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Manages F5OS partition\n    var velos_part = new F5os.Partition(\"velos-part\", new()\n    {\n        Name = \"TerraformPartition\",\n        OsVersion = \"1.3.1-5968\",\n        Ipv4MgmtAddress = \"10.144.140.125/24\",\n        Ipv4MgmtGateway = \"10.144.140.253\",\n        Ipv6MgmtAddress = \"2001::1/64\",\n        Ipv6MgmtGateway = \"2001::\",\n        Slots = new[]\n        {\n            1,\n            2,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Manages F5OS partition\n\t\t_, err := f5os.NewPartition(ctx, \"velos-part\", \u0026f5os.PartitionArgs{\n\t\t\tName:            pulumi.String(\"TerraformPartition\"),\n\t\t\tOsVersion:       pulumi.String(\"1.3.1-5968\"),\n\t\t\tIpv4MgmtAddress: pulumi.String(\"10.144.140.125/24\"),\n\t\t\tIpv4MgmtGateway: pulumi.String(\"10.144.140.253\"),\n\t\t\tIpv6MgmtAddress: pulumi.String(\"2001::1/64\"),\n\t\t\tIpv6MgmtGateway: pulumi.String(\"2001::\"),\n\t\t\tSlots: pulumi.IntArray{\n\t\t\t\tpulumi.Int(1),\n\t\t\t\tpulumi.Int(2),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.Partition;\nimport com.pulumi.f5os.PartitionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Manages F5OS partition\n        var velos_part = new Partition(\"velos-part\", PartitionArgs.builder()\n            .name(\"TerraformPartition\")\n            .osVersion(\"1.3.1-5968\")\n            .ipv4MgmtAddress(\"10.144.140.125/24\")\n            .ipv4MgmtGateway(\"10.144.140.253\")\n            .ipv6MgmtAddress(\"2001::1/64\")\n            .ipv6MgmtGateway(\"2001::\")\n            .slots(            \n                1,\n                2)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Manages F5OS partition\n  velos-part:\n    type: f5os:Partition\n    properties:\n      name: TerraformPartition\n      osVersion: 1.3.1-5968\n      ipv4MgmtAddress: 10.144.140.125/24\n      ipv4MgmtGateway: 10.144.140.253\n      ipv6MgmtAddress: 2001::1/64\n      ipv6MgmtGateway: '2001::'\n      slots:\n        - 1\n        - 2\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "configurationVolumeSize": {
                     "type": "integer",
-                    "description": "select the desired configuration volume in increments of 1 GB. The default value is 10 GB, with a minimum of 5 GB and a\nmaximum of 15 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
+                    "description": "select the desired configuration volume in increments of 1 GB.\nThe default value is 10 GB, with a minimum of 5 GB and a maximum of 15 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -771,11 +777,11 @@
                 },
                 "imagesVolumeSize": {
                     "type": "integer",
-                    "description": "select the desired storage volume for all tenant images in increments of 1 GB. The default value is 15 GB, with a\nminimum of 5 GB and a maximum of 50 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
+                    "description": "select the desired storage volume for all tenant images in increments of 1 GB.\nThe default value is 15 GB, with a minimum of 5 GB and a maximum of 50 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
                 },
                 "ipv4MgmtAddress": {
                     "type": "string",
-                    "description": "Specifies the IPv4 address and subnet mask used to access the chassis partition. The address must be specified in CIDR\nnotation e.g. 192.168.1.1/24.\n"
+                    "description": "Specifies the IPv4 address and subnet mask used to access the chassis partition.\nThe address must be specified in CIDR notation e.g. 192.168.1.1/24.\n"
                 },
                 "ipv4MgmtGateway": {
                     "type": "string",
@@ -783,15 +789,15 @@
                 },
                 "ipv6MgmtAddress": {
                     "type": "string",
-                    "description": "Specifies the IPv6 address and subnet mask used to access the chassis partition. The address must be specified in CIDR\nnotation e.g. 2002::1234:abcd:ffff:c0a8:101/64. Required for create operations.\n"
+                    "description": "Specifies the IPv6 address and subnet mask used to access the chassis partition.\nThe address must be specified in CIDR notation e.g. 2002::1234:abcd:ffff:c0a8:101/64.\nRequired for create operations.\n"
                 },
                 "ipv6MgmtGateway": {
                     "type": "string",
-                    "description": "Specifies the IPv6 chassis partition management gateway. Required for create operations.\n"
+                    "description": "Specifies the IPv6 chassis partition management gateway.\nRequired for create operations.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the chassis partition. Partition names must consist only of alphanumerics (0-9, a-z, A-Z), must begin with a\nletter, and are limited to 31 characters.\n"
+                    "description": "Name of the chassis partition.\nPartition names must consist only of alphanumerics (0-9, a-z, A-Z), must begin with a letter, and are limited to 31 characters.\n"
                 },
                 "osVersion": {
                     "type": "string",
@@ -799,14 +805,14 @@
                 },
                 "sharedVolumeSize": {
                     "type": "integer",
-                    "description": "select the desired user data (tcpdump captures, QKView data, etc.) volume in increments of 1 GB. The default value is 10\nGB, with a minimum of 5 GB and a maximum of 20 GBAfter volume sizes are configured, their sizes can be increased but not\nreduced\n"
+                    "description": "select the desired user data (tcpdump captures, QKView data, etc.) volume in increments of 1 GB.\nThe default value is 10 GB, with a minimum of 5 GB and a maximum of 20 GBAfter volume sizes are configured, their sizes can be increased but not reduced\n"
                 },
                 "slots": {
                     "type": "array",
                     "items": {
                         "type": "integer"
                     },
-                    "description": "List of integers. Specifies which slots with which the chassis partition should associated.\n"
+                    "description": "List of integers.\nSpecifies which slots with which the chassis partition should associated.\n"
                 },
                 "timeout": {
                     "type": "integer",
@@ -826,7 +832,7 @@
             "inputProperties": {
                 "configurationVolumeSize": {
                     "type": "integer",
-                    "description": "select the desired configuration volume in increments of 1 GB. The default value is 10 GB, with a minimum of 5 GB and a\nmaximum of 15 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
+                    "description": "select the desired configuration volume in increments of 1 GB.\nThe default value is 10 GB, with a minimum of 5 GB and a maximum of 15 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -834,11 +840,11 @@
                 },
                 "imagesVolumeSize": {
                     "type": "integer",
-                    "description": "select the desired storage volume for all tenant images in increments of 1 GB. The default value is 15 GB, with a\nminimum of 5 GB and a maximum of 50 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
+                    "description": "select the desired storage volume for all tenant images in increments of 1 GB.\nThe default value is 15 GB, with a minimum of 5 GB and a maximum of 50 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
                 },
                 "ipv4MgmtAddress": {
                     "type": "string",
-                    "description": "Specifies the IPv4 address and subnet mask used to access the chassis partition. The address must be specified in CIDR\nnotation e.g. 192.168.1.1/24.\n"
+                    "description": "Specifies the IPv4 address and subnet mask used to access the chassis partition.\nThe address must be specified in CIDR notation e.g. 192.168.1.1/24.\n"
                 },
                 "ipv4MgmtGateway": {
                     "type": "string",
@@ -846,15 +852,15 @@
                 },
                 "ipv6MgmtAddress": {
                     "type": "string",
-                    "description": "Specifies the IPv6 address and subnet mask used to access the chassis partition. The address must be specified in CIDR\nnotation e.g. 2002::1234:abcd:ffff:c0a8:101/64. Required for create operations.\n"
+                    "description": "Specifies the IPv6 address and subnet mask used to access the chassis partition.\nThe address must be specified in CIDR notation e.g. 2002::1234:abcd:ffff:c0a8:101/64.\nRequired for create operations.\n"
                 },
                 "ipv6MgmtGateway": {
                     "type": "string",
-                    "description": "Specifies the IPv6 chassis partition management gateway. Required for create operations.\n"
+                    "description": "Specifies the IPv6 chassis partition management gateway.\nRequired for create operations.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the chassis partition. Partition names must consist only of alphanumerics (0-9, a-z, A-Z), must begin with a\nletter, and are limited to 31 characters.\n"
+                    "description": "Name of the chassis partition.\nPartition names must consist only of alphanumerics (0-9, a-z, A-Z), must begin with a letter, and are limited to 31 characters.\n"
                 },
                 "osVersion": {
                     "type": "string",
@@ -862,14 +868,14 @@
                 },
                 "sharedVolumeSize": {
                     "type": "integer",
-                    "description": "select the desired user data (tcpdump captures, QKView data, etc.) volume in increments of 1 GB. The default value is 10\nGB, with a minimum of 5 GB and a maximum of 20 GBAfter volume sizes are configured, their sizes can be increased but not\nreduced\n"
+                    "description": "select the desired user data (tcpdump captures, QKView data, etc.) volume in increments of 1 GB.\nThe default value is 10 GB, with a minimum of 5 GB and a maximum of 20 GBAfter volume sizes are configured, their sizes can be increased but not reduced\n"
                 },
                 "slots": {
                     "type": "array",
                     "items": {
                         "type": "integer"
                     },
-                    "description": "List of integers. Specifies which slots with which the chassis partition should associated.\n"
+                    "description": "List of integers.\nSpecifies which slots with which the chassis partition should associated.\n"
                 },
                 "timeout": {
                     "type": "integer",
@@ -881,7 +887,7 @@
                 "properties": {
                     "configurationVolumeSize": {
                         "type": "integer",
-                        "description": "select the desired configuration volume in increments of 1 GB. The default value is 10 GB, with a minimum of 5 GB and a\nmaximum of 15 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
+                        "description": "select the desired configuration volume in increments of 1 GB.\nThe default value is 10 GB, with a minimum of 5 GB and a maximum of 15 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
                     },
                     "enabled": {
                         "type": "boolean",
@@ -889,11 +895,11 @@
                     },
                     "imagesVolumeSize": {
                         "type": "integer",
-                        "description": "select the desired storage volume for all tenant images in increments of 1 GB. The default value is 15 GB, with a\nminimum of 5 GB and a maximum of 50 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
+                        "description": "select the desired storage volume for all tenant images in increments of 1 GB.\nThe default value is 15 GB, with a minimum of 5 GB and a maximum of 50 GB.After volume sizes are configured, their sizes can be increased but not reduced\n"
                     },
                     "ipv4MgmtAddress": {
                         "type": "string",
-                        "description": "Specifies the IPv4 address and subnet mask used to access the chassis partition. The address must be specified in CIDR\nnotation e.g. 192.168.1.1/24.\n"
+                        "description": "Specifies the IPv4 address and subnet mask used to access the chassis partition.\nThe address must be specified in CIDR notation e.g. 192.168.1.1/24.\n"
                     },
                     "ipv4MgmtGateway": {
                         "type": "string",
@@ -901,15 +907,15 @@
                     },
                     "ipv6MgmtAddress": {
                         "type": "string",
-                        "description": "Specifies the IPv6 address and subnet mask used to access the chassis partition. The address must be specified in CIDR\nnotation e.g. 2002::1234:abcd:ffff:c0a8:101/64. Required for create operations.\n"
+                        "description": "Specifies the IPv6 address and subnet mask used to access the chassis partition.\nThe address must be specified in CIDR notation e.g. 2002::1234:abcd:ffff:c0a8:101/64.\nRequired for create operations.\n"
                     },
                     "ipv6MgmtGateway": {
                         "type": "string",
-                        "description": "Specifies the IPv6 chassis partition management gateway. Required for create operations.\n"
+                        "description": "Specifies the IPv6 chassis partition management gateway.\nRequired for create operations.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the chassis partition. Partition names must consist only of alphanumerics (0-9, a-z, A-Z), must begin with a\nletter, and are limited to 31 characters.\n"
+                        "description": "Name of the chassis partition.\nPartition names must consist only of alphanumerics (0-9, a-z, A-Z), must begin with a letter, and are limited to 31 characters.\n"
                     },
                     "osVersion": {
                         "type": "string",
@@ -917,14 +923,14 @@
                     },
                     "sharedVolumeSize": {
                         "type": "integer",
-                        "description": "select the desired user data (tcpdump captures, QKView data, etc.) volume in increments of 1 GB. The default value is 10\nGB, with a minimum of 5 GB and a maximum of 20 GBAfter volume sizes are configured, their sizes can be increased but not\nreduced\n"
+                        "description": "select the desired user data (tcpdump captures, QKView data, etc.) volume in increments of 1 GB.\nThe default value is 10 GB, with a minimum of 5 GB and a maximum of 20 GBAfter volume sizes are configured, their sizes can be increased but not reduced\n"
                     },
                     "slots": {
                         "type": "array",
                         "items": {
                             "type": "integer"
                         },
-                        "description": "List of integers. Specifies which slots with which the chassis partition should associated.\n"
+                        "description": "List of integers.\nSpecifies which slots with which the chassis partition should associated.\n"
                     },
                     "timeout": {
                         "type": "integer",
@@ -935,6 +941,7 @@
             }
         },
         "f5os:index/partitionChangePassword:PartitionChangePassword": {
+            "description": "Resource used to manage password of a specific user on a velos chassis partition.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\n// Manages Changing F5os Partition password\nconst changepass = new f5os.PartitionChangePassword(\"changepass\", {\n    userName: \"xxxxx\",\n    oldPassword: \"xxxxxxxx\",\n    newPassword: \"xxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\n# Manages Changing F5os Partition password\nchangepass = f5os.PartitionChangePassword(\"changepass\",\n    user_name=\"xxxxx\",\n    old_password=\"xxxxxxxx\",\n    new_password=\"xxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Manages Changing F5os Partition password\n    var changepass = new F5os.PartitionChangePassword(\"changepass\", new()\n    {\n        UserName = \"xxxxx\",\n        OldPassword = \"xxxxxxxx\",\n        NewPassword = \"xxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Manages Changing F5os Partition password\n\t\t_, err := f5os.NewPartitionChangePassword(ctx, \"changepass\", \u0026f5os.PartitionChangePasswordArgs{\n\t\t\tUserName:    pulumi.String(\"xxxxx\"),\n\t\t\tOldPassword: pulumi.String(\"xxxxxxxx\"),\n\t\t\tNewPassword: pulumi.String(\"xxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.PartitionChangePassword;\nimport com.pulumi.f5os.PartitionChangePasswordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Manages Changing F5os Partition password\n        var changepass = new PartitionChangePassword(\"changepass\", PartitionChangePasswordArgs.builder()\n            .userName(\"xxxxx\")\n            .oldPassword(\"xxxxxxxx\")\n            .newPassword(\"xxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Manages Changing F5os Partition password\n  changepass:\n    type: f5os:PartitionChangePassword\n    properties:\n      userName: xxxxx\n      oldPassword: xxxxxxxx\n      newPassword: xxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "newPassword": {
                     "type": "string",
@@ -999,6 +1006,7 @@
             }
         },
         "f5os:index/primarykey:Primarykey": {
+            "description": "Manage system primary-key using passphrase and salt on F5OS devices.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\n// Manages Primary key settings on F5OS platforms\nconst _default = new f5os.Primarykey(\"default\", {\n    passphrase: \"test-pass\",\n    salt: \"test-salt\",\n    forceUpdate: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\n# Manages Primary key settings on F5OS platforms\ndefault = f5os.Primarykey(\"default\",\n    passphrase=\"test-pass\",\n    salt=\"test-salt\",\n    force_update=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Manages Primary key settings on F5OS platforms\n    var @default = new F5os.Primarykey(\"default\", new()\n    {\n        Passphrase = \"test-pass\",\n        Salt = \"test-salt\",\n        ForceUpdate = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Manages Primary key settings on F5OS platforms\n\t\t_, err := f5os.NewPrimarykey(ctx, \"default\", \u0026f5os.PrimarykeyArgs{\n\t\t\tPassphrase:  pulumi.String(\"test-pass\"),\n\t\t\tSalt:        pulumi.String(\"test-salt\"),\n\t\t\tForceUpdate: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.Primarykey;\nimport com.pulumi.f5os.PrimarykeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Manages Primary key settings on F5OS platforms\n        var default_ = new Primarykey(\"default\", PrimarykeyArgs.builder()\n            .passphrase(\"test-pass\")\n            .salt(\"test-salt\")\n            .forceUpdate(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Manages Primary key settings on F5OS platforms\n  default:\n    type: f5os:Primarykey\n    properties:\n      passphrase: test-pass\n      salt: test-salt\n      forceUpdate: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "forceUpdate": {
                     "type": "boolean",
@@ -1080,6 +1088,7 @@
             }
         },
         "f5os:index/system:System": {
+            "description": "Resource to manage generic system settings\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\n// Manages System settings on F5OS platforms\nconst systemSettings = new f5os.System(\"system_settings\", {\n    hostname: \"system.example.net\",\n    motd: \"Todays weather is great!\",\n    loginBanner: \"Welcome to the system.\",\n    timezone: \"UTC\",\n    cliTimeout: 3600,\n    tokenLifetime: 15,\n    sshdIdleTimeout: \"1800\",\n    httpdCiphersuite: \"ECDHE-RSA-AES256-GCM-SHA384\",\n    sshdCiphers: [\n        \"aes256-ctr\",\n        \"aes256-gcm@openssh.com\",\n    ],\n    sshdKexAlgs: [\"ecdh-sha2-nistp384\"],\n    sshdMacAlgs: [\"hmac-sha1-96\"],\n    sshdHkeyAlgs: [\"ssh-rsa\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\n# Manages System settings on F5OS platforms\nsystem_settings = f5os.System(\"system_settings\",\n    hostname=\"system.example.net\",\n    motd=\"Todays weather is great!\",\n    login_banner=\"Welcome to the system.\",\n    timezone=\"UTC\",\n    cli_timeout=3600,\n    token_lifetime=15,\n    sshd_idle_timeout=\"1800\",\n    httpd_ciphersuite=\"ECDHE-RSA-AES256-GCM-SHA384\",\n    sshd_ciphers=[\n        \"aes256-ctr\",\n        \"aes256-gcm@openssh.com\",\n    ],\n    sshd_kex_algs=[\"ecdh-sha2-nistp384\"],\n    sshd_mac_algs=[\"hmac-sha1-96\"],\n    sshd_hkey_algs=[\"ssh-rsa\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Manages System settings on F5OS platforms\n    var systemSettings = new F5os.System(\"system_settings\", new()\n    {\n        Hostname = \"system.example.net\",\n        Motd = \"Todays weather is great!\",\n        LoginBanner = \"Welcome to the system.\",\n        Timezone = \"UTC\",\n        CliTimeout = 3600,\n        TokenLifetime = 15,\n        SshdIdleTimeout = \"1800\",\n        HttpdCiphersuite = \"ECDHE-RSA-AES256-GCM-SHA384\",\n        SshdCiphers = new[]\n        {\n            \"aes256-ctr\",\n            \"aes256-gcm@openssh.com\",\n        },\n        SshdKexAlgs = new[]\n        {\n            \"ecdh-sha2-nistp384\",\n        },\n        SshdMacAlgs = new[]\n        {\n            \"hmac-sha1-96\",\n        },\n        SshdHkeyAlgs = new[]\n        {\n            \"ssh-rsa\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Manages System settings on F5OS platforms\n\t\t_, err := f5os.NewSystem(ctx, \"system_settings\", \u0026f5os.SystemArgs{\n\t\t\tHostname:         pulumi.String(\"system.example.net\"),\n\t\t\tMotd:             pulumi.String(\"Todays weather is great!\"),\n\t\t\tLoginBanner:      pulumi.String(\"Welcome to the system.\"),\n\t\t\tTimezone:         pulumi.String(\"UTC\"),\n\t\t\tCliTimeout:       pulumi.Int(3600),\n\t\t\tTokenLifetime:    pulumi.Int(15),\n\t\t\tSshdIdleTimeout:  pulumi.String(\"1800\"),\n\t\t\tHttpdCiphersuite: pulumi.String(\"ECDHE-RSA-AES256-GCM-SHA384\"),\n\t\t\tSshdCiphers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"aes256-ctr\"),\n\t\t\t\tpulumi.String(\"aes256-gcm@openssh.com\"),\n\t\t\t},\n\t\t\tSshdKexAlgs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ecdh-sha2-nistp384\"),\n\t\t\t},\n\t\t\tSshdMacAlgs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"hmac-sha1-96\"),\n\t\t\t},\n\t\t\tSshdHkeyAlgs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ssh-rsa\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.System;\nimport com.pulumi.f5os.SystemArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Manages System settings on F5OS platforms\n        var systemSettings = new System(\"systemSettings\", SystemArgs.builder()\n            .hostname(\"system.example.net\")\n            .motd(\"Todays weather is great!\")\n            .loginBanner(\"Welcome to the system.\")\n            .timezone(\"UTC\")\n            .cliTimeout(3600)\n            .tokenLifetime(15)\n            .sshdIdleTimeout(\"1800\")\n            .httpdCiphersuite(\"ECDHE-RSA-AES256-GCM-SHA384\")\n            .sshdCiphers(            \n                \"aes256-ctr\",\n                \"aes256-gcm@openssh.com\")\n            .sshdKexAlgs(\"ecdh-sha2-nistp384\")\n            .sshdMacAlgs(\"hmac-sha1-96\")\n            .sshdHkeyAlgs(\"ssh-rsa\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Manages System settings on F5OS platforms\n  systemSettings:\n    type: f5os:System\n    name: system_settings\n    properties:\n      hostname: system.example.net\n      motd: Todays weather is great!\n      loginBanner: Welcome to the system.\n      timezone: UTC\n      cliTimeout: 3600\n      tokenLifetime: 15\n      sshdIdleTimeout: 1800\n      httpdCiphersuite: ECDHE-RSA-AES256-GCM-SHA384\n      sshdCiphers:\n        - aes256-ctr\n        - aes256-gcm@openssh.com\n      sshdKexAlgs:\n        - ecdh-sha2-nistp384\n      sshdMacAlgs:\n        - hmac-sha1-96\n      sshdHkeyAlgs:\n        - ssh-rsa\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "cliTimeout": {
                     "type": "integer",
@@ -1278,14 +1287,15 @@
             }
         },
         "f5os:index/tenant:Tenant": {
+            "description": "Resource used for Manage F5OS tenant on chassis partition/rSeries Appliance\n\n\u003e **NOTE** `f5os.Tenant` resource is used with chassis partition/rSeries appliance, More info on [Tenant](https://techdocs.f5.com/en-us/velos-1-5-0/velos-systems-administration-configuration/title-tenant-management.html#title-tenant-management).\nProvider `f5os` credentials will be chassis partition/rSeries appliance `host`,`username` and `password`\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\n// Manage F5OS Tenant\nconst test3 = new f5os.Tenant(\"test3\", {\n    name: \"testtenant-ecosys3\",\n    imageName: \"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\",\n    mgmtIp: \"10.100.100.26\",\n    mgmtGateway: \"10.100.100.1\",\n    mgmtPrefix: 24,\n    type: \"BIG-IP\",\n    cpuCores: 8,\n    nodes: [1],\n    vlans: [\n        1,\n        2,\n    ],\n    runningState: \"deployed\",\n    virtualDiskSize: 82,\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\n# Manage F5OS Tenant\ntest3 = f5os.Tenant(\"test3\",\n    name=\"testtenant-ecosys3\",\n    image_name=\"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\",\n    mgmt_ip=\"10.100.100.26\",\n    mgmt_gateway=\"10.100.100.1\",\n    mgmt_prefix=24,\n    type=\"BIG-IP\",\n    cpu_cores=8,\n    nodes=[1],\n    vlans=[\n        1,\n        2,\n    ],\n    running_state=\"deployed\",\n    virtual_disk_size=82)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Manage F5OS Tenant\n    var test3 = new F5os.Tenant(\"test3\", new()\n    {\n        Name = \"testtenant-ecosys3\",\n        ImageName = \"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\",\n        MgmtIp = \"10.100.100.26\",\n        MgmtGateway = \"10.100.100.1\",\n        MgmtPrefix = 24,\n        Type = \"BIG-IP\",\n        CpuCores = 8,\n        Nodes = new[]\n        {\n            1,\n        },\n        Vlans = new[]\n        {\n            1,\n            2,\n        },\n        RunningState = \"deployed\",\n        VirtualDiskSize = 82,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Manage F5OS Tenant\n\t\t_, err := f5os.NewTenant(ctx, \"test3\", \u0026f5os.TenantArgs{\n\t\t\tName:        pulumi.String(\"testtenant-ecosys3\"),\n\t\t\tImageName:   pulumi.String(\"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\"),\n\t\t\tMgmtIp:      pulumi.String(\"10.100.100.26\"),\n\t\t\tMgmtGateway: pulumi.String(\"10.100.100.1\"),\n\t\t\tMgmtPrefix:  pulumi.Int(24),\n\t\t\tType:        pulumi.String(\"BIG-IP\"),\n\t\t\tCpuCores:    pulumi.Int(8),\n\t\t\tNodes: pulumi.IntArray{\n\t\t\t\tpulumi.Int(1),\n\t\t\t},\n\t\t\tVlans: pulumi.IntArray{\n\t\t\t\tpulumi.Int(1),\n\t\t\t\tpulumi.Int(2),\n\t\t\t},\n\t\t\tRunningState:    pulumi.String(\"deployed\"),\n\t\t\tVirtualDiskSize: pulumi.Int(82),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.Tenant;\nimport com.pulumi.f5os.TenantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Manage F5OS Tenant\n        var test3 = new Tenant(\"test3\", TenantArgs.builder()\n            .name(\"testtenant-ecosys3\")\n            .imageName(\"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\")\n            .mgmtIp(\"10.100.100.26\")\n            .mgmtGateway(\"10.100.100.1\")\n            .mgmtPrefix(24)\n            .type(\"BIG-IP\")\n            .cpuCores(8)\n            .nodes(1)\n            .vlans(            \n                1,\n                2)\n            .runningState(\"deployed\")\n            .virtualDiskSize(82)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Manage F5OS Tenant\n  test3:\n    type: f5os:Tenant\n    properties:\n      name: testtenant-ecosys3\n      imageName: BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\n      mgmtIp: 10.100.100.26\n      mgmtGateway: 10.100.100.1\n      mgmtPrefix: 24\n      type: BIG-IP\n      cpuCores: 8\n      nodes:\n        - 1\n      vlans:\n        - 1\n        - 2\n      runningState: deployed\n      virtualDiskSize: 82\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nTenant can be imported by specifying the tenant Name identifier.\n\n```sh\n$ pulumi import f5os:index/tenant:Tenant tenant-import testtenant\n```\n\n",
             "properties": {
                 "cpuCores": {
                     "type": "integer",
-                    "description": "The number of vCPUs that should be added to the tenant. Required for create operations.\n"
+                    "description": "The number of vCPUs that should be added to the tenant.\nRequired for create operations.\n"
                 },
                 "cryptos": {
                     "type": "string",
-                    "description": "Whether crypto and compression hardware offload should be enabled on the tenant. We recommend it is enabled, otherwise\ncrypto and compression may be processed in CPU.\n"
+                    "description": "Whether crypto and compression hardware offload should be enabled on the tenant.\nWe recommend it is enabled, otherwise crypto and compression may be processed in CPU.\n"
                 },
                 "dagIpv6PrefixLength": {
                     "type": "integer",
@@ -1293,19 +1303,19 @@
                 },
                 "deploymentFile": {
                     "type": "string",
-                    "description": "Deployment file used for BIG-IP-Next . Required for if `type` is `BIG-IP-Next`.\n"
+                    "description": "Deployment file used for BIG-IP-Next .\nRequired for if `type` is `BIG-IP-Next`.\n"
                 },
                 "imageName": {
                     "type": "string",
-                    "description": "Name of the tenant image to be used. Required for create operations\n"
+                    "description": "Name of the tenant image to be used.\nRequired for create operations\n"
                 },
                 "macBlockSize": {
                     "type": "string",
-                    "description": "Configure a BIG-IP tenant on these systems to use contiguous block of MAC allocation. Default value is `one`.\n"
+                    "description": "Configure a BIG-IP tenant on these systems to use contiguous block of MAC allocation.\nDefault value is `one`.\n"
                 },
                 "memory": {
                     "type": "integer",
-                    "description": "The amount of memory that should be provided to the tenant in MB. More information on memory sizing for\n[Velos](https://clouddocs.f5.com/training/community/velos-training/html/velos_performance_and_sizing.html#memory-sizing)/[rSeries](https://clouddocs.f5.com/training/community/rseries-training/html/rseries_performance_and_sizing.html#memory-sizing)\n"
+                    "description": "The amount of memory that should be provided to the tenant in MB.\nMore information on memory sizing for [Velos](https://clouddocs.f5.com/training/community/velos-training/html/velos_performance_and_sizing.html#memory-sizing)/[rSeries](https://clouddocs.f5.com/training/community/rseries-training/html/rseries_performance_and_sizing.html#memory-sizing)\n"
                 },
                 "mgmtGateway": {
                     "type": "string",
@@ -1313,7 +1323,7 @@
                 },
                 "mgmtIp": {
                     "type": "string",
-                    "description": "IP address used to connect to the deployed tenant. Required for create operations.\n"
+                    "description": "IP address used to connect to the deployed tenant.\nRequired for create operations.\n"
                 },
                 "mgmtPrefix": {
                     "type": "integer",
@@ -1321,14 +1331,14 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the tenant. The first character must be a letter. Only lowercase alphanumeric characters are allowed. No special\nor extended characters are allowed except for hyphens. The name cannot exceed 50 characters.\n"
+                    "description": "Name of the tenant.\nThe first character must be a letter.\nOnly lowercase alphanumeric characters are allowed.\nNo special or extended characters are allowed except for hyphens.\nThe name cannot exceed 50 characters.\n"
                 },
                 "nodes": {
                     "type": "array",
                     "items": {
                         "type": "integer"
                     },
-                    "description": "List of integers. Specifies on which blades nodes the tenants are deployed. Required for create operations. For single\nblade platforms like rSeries only the value of 1 should be provided.\n"
+                    "description": "List of integers. Specifies on which blades nodes the tenants are deployed.\nRequired for create operations.\nFor single blade platforms like rSeries only the value of 1 should be provided.\n"
                 },
                 "runningState": {
                     "type": "string",
@@ -1344,7 +1354,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Name of the tenant image to be used. Required for create operations\n"
+                    "description": "Name of the tenant image to be used.\nRequired for create operations\n"
                 },
                 "virtualDiskSize": {
                     "type": "integer",
@@ -1355,7 +1365,7 @@
                     "items": {
                         "type": "integer"
                     },
-                    "description": "The existing VLAN IDs in the chassis partition that should be added to the tenant. The order of these VLANs is ignored.\nThis module orders the VLANs automatically, if you deliberately re-order them in subsequent tasks, this module will not\nregister a change. Required for create operations\n"
+                    "description": "The existing VLAN IDs in the chassis partition that should be added to the tenant.\nThe order of these VLANs is ignored.\nThis module orders the VLANs automatically, if you deliberately re-order them in subsequent tasks, this module will not register a change.\nRequired for create operations\n"
                 }
             },
             "required": [
@@ -1378,11 +1388,11 @@
             "inputProperties": {
                 "cpuCores": {
                     "type": "integer",
-                    "description": "The number of vCPUs that should be added to the tenant. Required for create operations.\n"
+                    "description": "The number of vCPUs that should be added to the tenant.\nRequired for create operations.\n"
                 },
                 "cryptos": {
                     "type": "string",
-                    "description": "Whether crypto and compression hardware offload should be enabled on the tenant. We recommend it is enabled, otherwise\ncrypto and compression may be processed in CPU.\n"
+                    "description": "Whether crypto and compression hardware offload should be enabled on the tenant.\nWe recommend it is enabled, otherwise crypto and compression may be processed in CPU.\n"
                 },
                 "dagIpv6PrefixLength": {
                     "type": "integer",
@@ -1390,19 +1400,19 @@
                 },
                 "deploymentFile": {
                     "type": "string",
-                    "description": "Deployment file used for BIG-IP-Next . Required for if `type` is `BIG-IP-Next`.\n"
+                    "description": "Deployment file used for BIG-IP-Next .\nRequired for if `type` is `BIG-IP-Next`.\n"
                 },
                 "imageName": {
                     "type": "string",
-                    "description": "Name of the tenant image to be used. Required for create operations\n"
+                    "description": "Name of the tenant image to be used.\nRequired for create operations\n"
                 },
                 "macBlockSize": {
                     "type": "string",
-                    "description": "Configure a BIG-IP tenant on these systems to use contiguous block of MAC allocation. Default value is `one`.\n"
+                    "description": "Configure a BIG-IP tenant on these systems to use contiguous block of MAC allocation.\nDefault value is `one`.\n"
                 },
                 "memory": {
                     "type": "integer",
-                    "description": "The amount of memory that should be provided to the tenant in MB. More information on memory sizing for\n[Velos](https://clouddocs.f5.com/training/community/velos-training/html/velos_performance_and_sizing.html#memory-sizing)/[rSeries](https://clouddocs.f5.com/training/community/rseries-training/html/rseries_performance_and_sizing.html#memory-sizing)\n"
+                    "description": "The amount of memory that should be provided to the tenant in MB.\nMore information on memory sizing for [Velos](https://clouddocs.f5.com/training/community/velos-training/html/velos_performance_and_sizing.html#memory-sizing)/[rSeries](https://clouddocs.f5.com/training/community/rseries-training/html/rseries_performance_and_sizing.html#memory-sizing)\n"
                 },
                 "mgmtGateway": {
                     "type": "string",
@@ -1410,7 +1420,7 @@
                 },
                 "mgmtIp": {
                     "type": "string",
-                    "description": "IP address used to connect to the deployed tenant. Required for create operations.\n"
+                    "description": "IP address used to connect to the deployed tenant.\nRequired for create operations.\n"
                 },
                 "mgmtPrefix": {
                     "type": "integer",
@@ -1418,14 +1428,14 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the tenant. The first character must be a letter. Only lowercase alphanumeric characters are allowed. No special\nor extended characters are allowed except for hyphens. The name cannot exceed 50 characters.\n"
+                    "description": "Name of the tenant.\nThe first character must be a letter.\nOnly lowercase alphanumeric characters are allowed.\nNo special or extended characters are allowed except for hyphens.\nThe name cannot exceed 50 characters.\n"
                 },
                 "nodes": {
                     "type": "array",
                     "items": {
                         "type": "integer"
                     },
-                    "description": "List of integers. Specifies on which blades nodes the tenants are deployed. Required for create operations. For single\nblade platforms like rSeries only the value of 1 should be provided.\n"
+                    "description": "List of integers. Specifies on which blades nodes the tenants are deployed.\nRequired for create operations.\nFor single blade platforms like rSeries only the value of 1 should be provided.\n"
                 },
                 "runningState": {
                     "type": "string",
@@ -1437,7 +1447,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Name of the tenant image to be used. Required for create operations\n"
+                    "description": "Name of the tenant image to be used.\nRequired for create operations\n"
                 },
                 "virtualDiskSize": {
                     "type": "integer",
@@ -1448,7 +1458,7 @@
                     "items": {
                         "type": "integer"
                     },
-                    "description": "The existing VLAN IDs in the chassis partition that should be added to the tenant. The order of these VLANs is ignored.\nThis module orders the VLANs automatically, if you deliberately re-order them in subsequent tasks, this module will not\nregister a change. Required for create operations\n"
+                    "description": "The existing VLAN IDs in the chassis partition that should be added to the tenant.\nThe order of these VLANs is ignored.\nThis module orders the VLANs automatically, if you deliberately re-order them in subsequent tasks, this module will not register a change.\nRequired for create operations\n"
                 }
             },
             "requiredInputs": [
@@ -1464,11 +1474,11 @@
                 "properties": {
                     "cpuCores": {
                         "type": "integer",
-                        "description": "The number of vCPUs that should be added to the tenant. Required for create operations.\n"
+                        "description": "The number of vCPUs that should be added to the tenant.\nRequired for create operations.\n"
                     },
                     "cryptos": {
                         "type": "string",
-                        "description": "Whether crypto and compression hardware offload should be enabled on the tenant. We recommend it is enabled, otherwise\ncrypto and compression may be processed in CPU.\n"
+                        "description": "Whether crypto and compression hardware offload should be enabled on the tenant.\nWe recommend it is enabled, otherwise crypto and compression may be processed in CPU.\n"
                     },
                     "dagIpv6PrefixLength": {
                         "type": "integer",
@@ -1476,19 +1486,19 @@
                     },
                     "deploymentFile": {
                         "type": "string",
-                        "description": "Deployment file used for BIG-IP-Next . Required for if `type` is `BIG-IP-Next`.\n"
+                        "description": "Deployment file used for BIG-IP-Next .\nRequired for if `type` is `BIG-IP-Next`.\n"
                     },
                     "imageName": {
                         "type": "string",
-                        "description": "Name of the tenant image to be used. Required for create operations\n"
+                        "description": "Name of the tenant image to be used.\nRequired for create operations\n"
                     },
                     "macBlockSize": {
                         "type": "string",
-                        "description": "Configure a BIG-IP tenant on these systems to use contiguous block of MAC allocation. Default value is `one`.\n"
+                        "description": "Configure a BIG-IP tenant on these systems to use contiguous block of MAC allocation.\nDefault value is `one`.\n"
                     },
                     "memory": {
                         "type": "integer",
-                        "description": "The amount of memory that should be provided to the tenant in MB. More information on memory sizing for\n[Velos](https://clouddocs.f5.com/training/community/velos-training/html/velos_performance_and_sizing.html#memory-sizing)/[rSeries](https://clouddocs.f5.com/training/community/rseries-training/html/rseries_performance_and_sizing.html#memory-sizing)\n"
+                        "description": "The amount of memory that should be provided to the tenant in MB.\nMore information on memory sizing for [Velos](https://clouddocs.f5.com/training/community/velos-training/html/velos_performance_and_sizing.html#memory-sizing)/[rSeries](https://clouddocs.f5.com/training/community/rseries-training/html/rseries_performance_and_sizing.html#memory-sizing)\n"
                     },
                     "mgmtGateway": {
                         "type": "string",
@@ -1496,7 +1506,7 @@
                     },
                     "mgmtIp": {
                         "type": "string",
-                        "description": "IP address used to connect to the deployed tenant. Required for create operations.\n"
+                        "description": "IP address used to connect to the deployed tenant.\nRequired for create operations.\n"
                     },
                     "mgmtPrefix": {
                         "type": "integer",
@@ -1504,14 +1514,14 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the tenant. The first character must be a letter. Only lowercase alphanumeric characters are allowed. No special\nor extended characters are allowed except for hyphens. The name cannot exceed 50 characters.\n"
+                        "description": "Name of the tenant.\nThe first character must be a letter.\nOnly lowercase alphanumeric characters are allowed.\nNo special or extended characters are allowed except for hyphens.\nThe name cannot exceed 50 characters.\n"
                     },
                     "nodes": {
                         "type": "array",
                         "items": {
                             "type": "integer"
                         },
-                        "description": "List of integers. Specifies on which blades nodes the tenants are deployed. Required for create operations. For single\nblade platforms like rSeries only the value of 1 should be provided.\n"
+                        "description": "List of integers. Specifies on which blades nodes the tenants are deployed.\nRequired for create operations.\nFor single blade platforms like rSeries only the value of 1 should be provided.\n"
                     },
                     "runningState": {
                         "type": "string",
@@ -1527,7 +1537,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Name of the tenant image to be used. Required for create operations\n"
+                        "description": "Name of the tenant image to be used.\nRequired for create operations\n"
                     },
                     "virtualDiskSize": {
                         "type": "integer",
@@ -1538,13 +1548,14 @@
                         "items": {
                             "type": "integer"
                         },
-                        "description": "The existing VLAN IDs in the chassis partition that should be added to the tenant. The order of these VLANs is ignored.\nThis module orders the VLANs automatically, if you deliberately re-order them in subsequent tasks, this module will not\nregister a change. Required for create operations\n"
+                        "description": "The existing VLAN IDs in the chassis partition that should be added to the tenant.\nThe order of these VLANs is ignored.\nThis module orders the VLANs automatically, if you deliberately re-order them in subsequent tasks, this module will not register a change.\nRequired for create operations\n"
                     }
                 },
                 "type": "object"
             }
         },
         "f5os:index/tenantImage:TenantImage": {
+            "description": "Resource used for Manage F5OS tenant images\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\n// Resource for tenant image copy\nconst test = new f5os.TenantImage(\"test\", {\n    imageName: \"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\",\n    remoteHost: \"xxxxx\",\n    remotePath: \"v17.1.0/daily/current/VM\",\n    localPath: \"images\",\n    timeout: 360,\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\n# Resource for tenant image copy\ntest = f5os.TenantImage(\"test\",\n    image_name=\"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\",\n    remote_host=\"xxxxx\",\n    remote_path=\"v17.1.0/daily/current/VM\",\n    local_path=\"images\",\n    timeout=360)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Resource for tenant image copy\n    var test = new F5os.TenantImage(\"test\", new()\n    {\n        ImageName = \"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\",\n        RemoteHost = \"xxxxx\",\n        RemotePath = \"v17.1.0/daily/current/VM\",\n        LocalPath = \"images\",\n        Timeout = 360,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Resource for tenant image copy\n\t\t_, err := f5os.NewTenantImage(ctx, \"test\", \u0026f5os.TenantImageArgs{\n\t\t\tImageName:  pulumi.String(\"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\"),\n\t\t\tRemoteHost: pulumi.String(\"xxxxx\"),\n\t\t\tRemotePath: pulumi.String(\"v17.1.0/daily/current/VM\"),\n\t\t\tLocalPath:  pulumi.String(\"images\"),\n\t\t\tTimeout:    pulumi.Int(360),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.TenantImage;\nimport com.pulumi.f5os.TenantImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Resource for tenant image copy\n        var test = new TenantImage(\"test\", TenantImageArgs.builder()\n            .imageName(\"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\")\n            .remoteHost(\"xxxxx\")\n            .remotePath(\"v17.1.0/daily/current/VM\")\n            .localPath(\"images\")\n            .timeout(360)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Resource for tenant image copy\n  test:\n    type: f5os:TenantImage\n    properties:\n      imageName: BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\n      remoteHost: xxxxx\n      remotePath: v17.1.0/daily/current/VM\n      localPath: images\n      timeout: 360\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "imageName": {
                     "type": "string",
@@ -1560,7 +1571,7 @@
                 },
                 "remoteHost": {
                     "type": "string",
-                    "description": "The hostname or IP address of the remote server on which the tenant image is stored. The server must make the image\naccessible via the specified protocol.\n"
+                    "description": "The hostname or IP address of the remote server on which the tenant image is stored.\nThe server must make the image accessible via the specified protocol.\n"
                 },
                 "remotePassword": {
                     "type": "string",
@@ -1573,7 +1584,7 @@
                 },
                 "remotePort": {
                     "type": "integer",
-                    "description": "The port on the remote host to which you want to connect. If the port is not provided, a default port for the selected\nprotocol is used.\n"
+                    "description": "The port on the remote host to which you want to connect.\nIf the port is not provided, a default port for the selected protocol is used.\n"
                 },
                 "remoteUser": {
                     "type": "string",
@@ -1612,7 +1623,7 @@
                 },
                 "remoteHost": {
                     "type": "string",
-                    "description": "The hostname or IP address of the remote server on which the tenant image is stored. The server must make the image\naccessible via the specified protocol.\n"
+                    "description": "The hostname or IP address of the remote server on which the tenant image is stored.\nThe server must make the image accessible via the specified protocol.\n"
                 },
                 "remotePassword": {
                     "type": "string",
@@ -1625,7 +1636,7 @@
                 },
                 "remotePort": {
                     "type": "integer",
-                    "description": "The port on the remote host to which you want to connect. If the port is not provided, a default port for the selected\nprotocol is used.\n"
+                    "description": "The port on the remote host to which you want to connect.\nIf the port is not provided, a default port for the selected protocol is used.\n"
                 },
                 "remoteUser": {
                     "type": "string",
@@ -1660,7 +1671,7 @@
                     },
                     "remoteHost": {
                         "type": "string",
-                        "description": "The hostname or IP address of the remote server on which the tenant image is stored. The server must make the image\naccessible via the specified protocol.\n"
+                        "description": "The hostname or IP address of the remote server on which the tenant image is stored.\nThe server must make the image accessible via the specified protocol.\n"
                     },
                     "remotePassword": {
                         "type": "string",
@@ -1673,7 +1684,7 @@
                     },
                     "remotePort": {
                         "type": "integer",
-                        "description": "The port on the remote host to which you want to connect. If the port is not provided, a default port for the selected\nprotocol is used.\n"
+                        "description": "The port on the remote host to which you want to connect.\nIf the port is not provided, a default port for the selected protocol is used.\n"
                     },
                     "remoteUser": {
                         "type": "string",
@@ -1696,6 +1707,7 @@
             }
         },
         "f5os:index/tlsCertKey:TlsCertKey": {
+            "description": "Resource used to manage tls cert and key on F5OS partitions\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\nconst testcert = new f5os.TlsCertKey(\"testcert\", {\n    name: \"testcert\",\n    daysValid: 40,\n    email: \"user@org.com\",\n    city: \"Hyd\",\n    province: \"Telangana\",\n    country: \"IN\",\n    organization: \"F7\",\n    unit: \"IT\",\n    keyType: \"encrypted-rsa\",\n    keySize: 2048,\n    keyPassphrase: \"test123\",\n    confirmKeyPassphrase: \"test123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\ntestcert = f5os.TlsCertKey(\"testcert\",\n    name=\"testcert\",\n    days_valid=40,\n    email=\"user@org.com\",\n    city=\"Hyd\",\n    province=\"Telangana\",\n    country=\"IN\",\n    organization=\"F7\",\n    unit=\"IT\",\n    key_type=\"encrypted-rsa\",\n    key_size=2048,\n    key_passphrase=\"test123\",\n    confirm_key_passphrase=\"test123\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testcert = new F5os.TlsCertKey(\"testcert\", new()\n    {\n        Name = \"testcert\",\n        DaysValid = 40,\n        Email = \"user@org.com\",\n        City = \"Hyd\",\n        Province = \"Telangana\",\n        Country = \"IN\",\n        Organization = \"F7\",\n        Unit = \"IT\",\n        KeyType = \"encrypted-rsa\",\n        KeySize = 2048,\n        KeyPassphrase = \"test123\",\n        ConfirmKeyPassphrase = \"test123\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := f5os.NewTlsCertKey(ctx, \"testcert\", \u0026f5os.TlsCertKeyArgs{\n\t\t\tName:                 pulumi.String(\"testcert\"),\n\t\t\tDaysValid:            pulumi.Int(40),\n\t\t\tEmail:                pulumi.String(\"user@org.com\"),\n\t\t\tCity:                 pulumi.String(\"Hyd\"),\n\t\t\tProvince:             pulumi.String(\"Telangana\"),\n\t\t\tCountry:              pulumi.String(\"IN\"),\n\t\t\tOrganization:         pulumi.String(\"F7\"),\n\t\t\tUnit:                 pulumi.String(\"IT\"),\n\t\t\tKeyType:              pulumi.String(\"encrypted-rsa\"),\n\t\t\tKeySize:              pulumi.Int(2048),\n\t\t\tKeyPassphrase:        pulumi.String(\"test123\"),\n\t\t\tConfirmKeyPassphrase: pulumi.String(\"test123\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.TlsCertKey;\nimport com.pulumi.f5os.TlsCertKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testcert = new TlsCertKey(\"testcert\", TlsCertKeyArgs.builder()\n            .name(\"testcert\")\n            .daysValid(40)\n            .email(\"user@org.com\")\n            .city(\"Hyd\")\n            .province(\"Telangana\")\n            .country(\"IN\")\n            .organization(\"F7\")\n            .unit(\"IT\")\n            .keyType(\"encrypted-rsa\")\n            .keySize(2048)\n            .keyPassphrase(\"test123\")\n            .confirmKeyPassphrase(\"test123\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testcert:\n    type: f5os:TlsCertKey\n    properties:\n      name: testcert\n      daysValid: 40\n      email: user@org.com\n      city: Hyd\n      province: Telangana\n      country: IN\n      organization: F7\n      unit: IT\n      keyType: encrypted-rsa\n      keySize: 2048\n      keyPassphrase: test123\n      confirmKeyPassphrase: test123\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "city": {
                     "type": "string",
@@ -1703,7 +1715,7 @@
                 },
                 "confirmKeyPassphrase": {
                     "type": "string",
-                    "description": "This specifies the confirmation of the passphrase for the key, the value should be the same as the `key_passphrase`.\nThis attribute is required when `key_type` is set to `encrypted-rsa` or `encrypted-ecdsa`\n",
+                    "description": "This specifies the confirmation of the passphrase for the key, the value should be the same as the `key_passphrase`. This attribute is required when `key_type` is set to `encrypted-rsa` or `encrypted-ecdsa`\n",
                     "secret": true
                 },
                 "country": {
@@ -1720,16 +1732,16 @@
                 },
                 "keyCurve": {
                     "type": "string",
-                    "description": "This specifies the specific elliptic curve used in ECC, this is only applicable for ECDSA keys. This attribute is\nrequired when `key_type` is set to `ecdsa` or `encrypted-ecdsa`\n"
+                    "description": "This specifies the specific elliptic curve used in ECC, this is only applicable for ECDSA keys. This attribute is required when `key_type` is set to `ecdsa` or `encrypted-ecdsa`\n"
                 },
                 "keyPassphrase": {
                     "type": "string",
-                    "description": "This specifies the passphrase for the key. This attribute is required when `key_type` is set to `encrypted-rsa` or\n`encrypted-ecdsa`\n",
+                    "description": "This specifies the passphrase for the key. This attribute is required when `key_type` is set to `encrypted-rsa` or `encrypted-ecdsa`\n",
                     "secret": true
                 },
                 "keySize": {
                     "type": "integer",
-                    "description": "This specifies the length of the key, this is only applicable for RSA keys. This attribute is required when `key_type`\nis set to `rsa` or `encrypted-rsa`\n"
+                    "description": "This specifies the length of the key, this is only applicable for RSA keys. This attribute is required when `key_type` is set to `rsa` or `encrypted-rsa`\n"
                 },
                 "keyType": {
                     "type": "string",
@@ -1749,7 +1761,7 @@
                 },
                 "subjectAlternativeName": {
                     "type": "string",
-                    "description": "The subject alternative name of the tls certificate. This attribute is required for F5OS v1.8 and above and not\nsupported for F5OS below v1.8\n"
+                    "description": "The subject alternative name of the tls certificate. This attribute is required for F5OS v1.8 and above and not supported for F5OS below v1.8\n"
                 },
                 "unit": {
                     "type": "string",
@@ -1772,7 +1784,7 @@
                 },
                 "confirmKeyPassphrase": {
                     "type": "string",
-                    "description": "This specifies the confirmation of the passphrase for the key, the value should be the same as the `key_passphrase`.\nThis attribute is required when `key_type` is set to `encrypted-rsa` or `encrypted-ecdsa`\n",
+                    "description": "This specifies the confirmation of the passphrase for the key, the value should be the same as the `key_passphrase`. This attribute is required when `key_type` is set to `encrypted-rsa` or `encrypted-ecdsa`\n",
                     "secret": true
                 },
                 "country": {
@@ -1789,16 +1801,16 @@
                 },
                 "keyCurve": {
                     "type": "string",
-                    "description": "This specifies the specific elliptic curve used in ECC, this is only applicable for ECDSA keys. This attribute is\nrequired when `key_type` is set to `ecdsa` or `encrypted-ecdsa`\n"
+                    "description": "This specifies the specific elliptic curve used in ECC, this is only applicable for ECDSA keys. This attribute is required when `key_type` is set to `ecdsa` or `encrypted-ecdsa`\n"
                 },
                 "keyPassphrase": {
                     "type": "string",
-                    "description": "This specifies the passphrase for the key. This attribute is required when `key_type` is set to `encrypted-rsa` or\n`encrypted-ecdsa`\n",
+                    "description": "This specifies the passphrase for the key. This attribute is required when `key_type` is set to `encrypted-rsa` or `encrypted-ecdsa`\n",
                     "secret": true
                 },
                 "keySize": {
                     "type": "integer",
-                    "description": "This specifies the length of the key, this is only applicable for RSA keys. This attribute is required when `key_type`\nis set to `rsa` or `encrypted-rsa`\n"
+                    "description": "This specifies the length of the key, this is only applicable for RSA keys. This attribute is required when `key_type` is set to `rsa` or `encrypted-rsa`\n"
                 },
                 "keyType": {
                     "type": "string",
@@ -1818,7 +1830,7 @@
                 },
                 "subjectAlternativeName": {
                     "type": "string",
-                    "description": "The subject alternative name of the tls certificate. This attribute is required for F5OS v1.8 and above and not\nsupported for F5OS below v1.8\n"
+                    "description": "The subject alternative name of the tls certificate. This attribute is required for F5OS v1.8 and above and not supported for F5OS below v1.8\n"
                 },
                 "unit": {
                     "type": "string",
@@ -1838,7 +1850,7 @@
                     },
                     "confirmKeyPassphrase": {
                         "type": "string",
-                        "description": "This specifies the confirmation of the passphrase for the key, the value should be the same as the `key_passphrase`.\nThis attribute is required when `key_type` is set to `encrypted-rsa` or `encrypted-ecdsa`\n",
+                        "description": "This specifies the confirmation of the passphrase for the key, the value should be the same as the `key_passphrase`. This attribute is required when `key_type` is set to `encrypted-rsa` or `encrypted-ecdsa`\n",
                         "secret": true
                     },
                     "country": {
@@ -1855,16 +1867,16 @@
                     },
                     "keyCurve": {
                         "type": "string",
-                        "description": "This specifies the specific elliptic curve used in ECC, this is only applicable for ECDSA keys. This attribute is\nrequired when `key_type` is set to `ecdsa` or `encrypted-ecdsa`\n"
+                        "description": "This specifies the specific elliptic curve used in ECC, this is only applicable for ECDSA keys. This attribute is required when `key_type` is set to `ecdsa` or `encrypted-ecdsa`\n"
                     },
                     "keyPassphrase": {
                         "type": "string",
-                        "description": "This specifies the passphrase for the key. This attribute is required when `key_type` is set to `encrypted-rsa` or\n`encrypted-ecdsa`\n",
+                        "description": "This specifies the passphrase for the key. This attribute is required when `key_type` is set to `encrypted-rsa` or `encrypted-ecdsa`\n",
                         "secret": true
                     },
                     "keySize": {
                         "type": "integer",
-                        "description": "This specifies the length of the key, this is only applicable for RSA keys. This attribute is required when `key_type`\nis set to `rsa` or `encrypted-rsa`\n"
+                        "description": "This specifies the length of the key, this is only applicable for RSA keys. This attribute is required when `key_type` is set to `rsa` or `encrypted-rsa`\n"
                     },
                     "keyType": {
                         "type": "string",
@@ -1884,7 +1896,7 @@
                     },
                     "subjectAlternativeName": {
                         "type": "string",
-                        "description": "The subject alternative name of the tls certificate. This attribute is required for F5OS v1.8 and above and not\nsupported for F5OS below v1.8\n"
+                        "description": "The subject alternative name of the tls certificate. This attribute is required for F5OS v1.8 and above and not supported for F5OS below v1.8\n"
                     },
                     "unit": {
                         "type": "string",
@@ -1899,14 +1911,15 @@
             }
         },
         "f5os:index/vlan:Vlan": {
+            "description": "Resource to Manage VLANs on F5OS based systems like chassis partitions or rSeries platforms\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\n// Manages Vlans on F5OS platforms\nconst vlan_id = new f5os.Vlan(\"vlan-id\", {\n    vlanId: 4,\n    name: \"vlan4\",\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\n# Manages Vlans on F5OS platforms\nvlan_id = f5os.Vlan(\"vlan-id\",\n    vlan_id=4,\n    name=\"vlan4\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Manages Vlans on F5OS platforms\n    var vlan_id = new F5os.Vlan(\"vlan-id\", new()\n    {\n        VlanId = 4,\n        Name = \"vlan4\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Manages Vlans on F5OS platforms\n\t\t_, err := f5os.NewVlan(ctx, \"vlan-id\", \u0026f5os.VlanArgs{\n\t\t\tVlanId: pulumi.Int(4),\n\t\t\tName:   pulumi.String(\"vlan4\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.Vlan;\nimport com.pulumi.f5os.VlanArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Manages Vlans on F5OS platforms\n        var vlan_id = new Vlan(\"vlan-id\", VlanArgs.builder()\n            .vlanId(4)\n            .name(\"vlan4\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Manages Vlans on F5OS platforms\n  vlan-id:\n    type: f5os:Vlan\n    properties:\n      vlanId: 4\n      name: vlan4\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nVlan can be imported by specifying the numeric vlan identifier.\n\n```sh\n$ pulumi import f5os:index/vlan:Vlan vlan-id-import 4\n```\n\n",
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of the VLAN to configure on the F5OS platform. This parameter is required when creating a resource.\nThe first character must be a letter, alphanumeric characters are allowed. Periods, commas, hyphens, and underscores are\nallowed. The name cannot exceed 58 characters.\n"
+                    "description": "Specifies the name of the VLAN to configure on the F5OS platform.\nThis parameter is required when creating a resource.\nThe first character must be a letter, alphanumeric characters are allowed.\nPeriods, commas, hyphens, and underscores are allowed.\nThe name cannot exceed 58 characters.\n"
                 },
                 "vlanId": {
                     "type": "integer",
-                    "description": "The ID for the VLAN. Valid value range is from `0` to `4095`.\n"
+                    "description": "The ID for the VLAN.\nValid value range is from `0` to `4095`.\n"
                 }
             },
             "required": [
@@ -1916,11 +1929,11 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of the VLAN to configure on the F5OS platform. This parameter is required when creating a resource.\nThe first character must be a letter, alphanumeric characters are allowed. Periods, commas, hyphens, and underscores are\nallowed. The name cannot exceed 58 characters.\n"
+                    "description": "Specifies the name of the VLAN to configure on the F5OS platform.\nThis parameter is required when creating a resource.\nThe first character must be a letter, alphanumeric characters are allowed.\nPeriods, commas, hyphens, and underscores are allowed.\nThe name cannot exceed 58 characters.\n"
                 },
                 "vlanId": {
                     "type": "integer",
-                    "description": "The ID for the VLAN. Valid value range is from `0` to `4095`.\n"
+                    "description": "The ID for the VLAN.\nValid value range is from `0` to `4095`.\n"
                 }
             },
             "requiredInputs": [
@@ -1931,11 +1944,11 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "Specifies the name of the VLAN to configure on the F5OS platform. This parameter is required when creating a resource.\nThe first character must be a letter, alphanumeric characters are allowed. Periods, commas, hyphens, and underscores are\nallowed. The name cannot exceed 58 characters.\n"
+                        "description": "Specifies the name of the VLAN to configure on the F5OS platform.\nThis parameter is required when creating a resource.\nThe first character must be a letter, alphanumeric characters are allowed.\nPeriods, commas, hyphens, and underscores are allowed.\nThe name cannot exceed 58 characters.\n"
                     },
                     "vlanId": {
                         "type": "integer",
-                        "description": "The ID for the VLAN. Valid value range is from `0` to `4095`.\n"
+                        "description": "The ID for the VLAN.\nValid value range is from `0` to `4095`.\n"
                     }
                 },
                 "type": "object"
@@ -1944,6 +1957,7 @@
     },
     "functions": {
         "f5os:index/getDeviceInfo:getDeviceInfo": {
+            "description": "Get Information about the various components of F5OS device. Currently the various components whose information is fetched are `interfaces`, `vlans`, `tenant images`, `controller images` and `partition images`. Information about partition and controller images can only be fetched from the Velos controller so please set you provider block to point to a Velos controller when you want information for partition and controller images\n\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDeviceInfo.\n",
                 "properties": {
@@ -1951,7 +1965,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of components for which to gather information. This attribute accept the following values:\n[`all`,`interfaces`,`vlans`,`tenant_images`,`partition_images`,`controller_images`,`!all`,`!interfaces`,`!vlans`,`!tenant_images`,`!partition_images`,`!controller_images`]\n"
                     }
                 },
                 "type": "object",
@@ -1963,39 +1978,46 @@
                 "description": "A collection of values returned by getDeviceInfo.\n",
                 "properties": {
                     "controllerImages": {
+                        "description": "Information about existing controller images\n",
                         "items": {
                             "$ref": "#/types/f5os:index/getDeviceInfoControllerImage:getDeviceInfoControllerImage"
                         },
                         "type": "array"
                     },
                     "gatherInfoOfs": {
+                        "description": "List of components for which to gather information. This attribute accept the following values:\n[`all`,`interfaces`,`vlans`,`tenant_images`,`partition_images`,`controller_images`,`!all`,`!interfaces`,`!vlans`,`!tenant_images`,`!partition_images`,`!controller_images`]\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
                     },
                     "id": {
+                        "description": "Identifier for Device Info\n",
                         "type": "string"
                     },
                     "interfaces": {
+                        "description": "Information about existing interfaces\n",
                         "items": {
                             "$ref": "#/types/f5os:index/getDeviceInfoInterface:getDeviceInfoInterface"
                         },
                         "type": "array"
                     },
                     "partitionImages": {
+                        "description": "Device info\n",
                         "items": {
                             "$ref": "#/types/f5os:index/getDeviceInfoPartitionImage:getDeviceInfoPartitionImage"
                         },
                         "type": "array"
                     },
                     "tenantImages": {
+                        "description": "Information about existing tenant images\n",
                         "items": {
                             "$ref": "#/types/f5os:index/getDeviceInfoTenantImage:getDeviceInfoTenantImage"
                         },
                         "type": "array"
                     },
                     "vlans": {
+                        "description": "Information about existing vlans\n",
                         "items": {
                             "$ref": "#/types/f5os:index/getDeviceInfoVlan:getDeviceInfoVlan"
                         },
@@ -2015,11 +2037,13 @@
             }
         },
         "f5os:index/getTenantImage:getTenantImage": {
+            "description": "Get information about the tenant Image on f5os platform.\n\nUse this data source to get information, whether image available on platform or not\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as f5os from \"@pulumi/f5os\";\n\nconst test = f5os.getTenantImage({\n    imageName: \"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\",\n});\n```\n```python\nimport pulumi\nimport pulumi_f5os as f5os\n\ntest = f5os.get_tenant_image(image_name=\"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing F5os = Pulumi.F5os;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = F5os.GetTenantImage.Invoke(new()\n    {\n        ImageName = \"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/BlackDark/pulumi-f5os/sdk/go/f5os\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := f5os.LookupTenantImage(ctx, \u0026f5os.LookupTenantImageArgs{\n\t\t\tImageName: \"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.f5os.F5osFunctions;\nimport com.pulumi.f5os.inputs.GetTenantImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = F5osFunctions.getTenantImage(GetTenantImageArgs.builder()\n            .imageName(\"BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      function: f5os:getTenantImage\n      arguments:\n        imageName: BIGIP-17.1.0-0.0.16.ALL-F5OS.qcow2.zip.bundle\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTenantImage.\n",
                 "properties": {
                     "imageName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Name of the tenant image to check\n"
                     }
                 },
                 "type": "object",
@@ -2031,12 +2055,15 @@
                 "description": "A collection of values returned by getTenantImage.\n",
                 "properties": {
                     "id": {
+                        "description": "Unique identifier of this data source\n",
                         "type": "string"
                     },
                     "imageName": {
+                        "description": "Name of the tenant image to check\n",
                         "type": "string"
                     },
                     "imageStatus": {
+                        "description": "Status of Image on the F5OS Platforms\n",
                         "type": "string"
                     }
                 },
