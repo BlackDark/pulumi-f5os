@@ -138,24 +138,24 @@ func Provider() tfbridge.ProviderInfo {
 		// match the TF provider module's require directive, not any replace directives.
 		GitHubOrg:    "BlackDark",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Config: map[string]*tfbridge.SchemaInfo{
+		Config:       map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
-			"region": {
-				Type: "f5os:region/region:Region",
-			},
+			// "region": {
+			// 	Type: "f5os:region/region:Region",
+			// },
 		},
 		// If extra types are needed for configuration, they can be added here.
 		ExtraTypes: map[string]schema.ComplexTypeSpec{
-			"f5os:region/region:Region": {
-				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
-				},
-				Enum: []schema.EnumValueSpec{
-					{Name: "here", Value: "HERE"},
-					{Name: "overThere", Value: "OVER_THERE"},
-				},
-			},
+			// "f5os:region/region:Region": {
+			// 	ObjectTypeSpec: schema.ObjectTypeSpec{
+			// 		Type: "string",
+			// 	},
+			// 	Enum: []schema.EnumValueSpec{
+			// 		{Name: "here", Value: "HERE"},
+			// 		{Name: "overThere", Value: "OVER_THERE"},
+			// 	},
+			// },
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// RespectSchemaVersion ensures the SDK is generated linking to the correct version of the provider.
