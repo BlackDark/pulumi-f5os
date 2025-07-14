@@ -13,6 +13,885 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type LoggingCaBundle struct {
+	// The PEM-encoded content of the CA bundle.
+	Content string `pulumi:"content"`
+	// The name of the CA bundle.
+	Name string `pulumi:"name"`
+}
+
+// LoggingCaBundleInput is an input type that accepts LoggingCaBundleArgs and LoggingCaBundleOutput values.
+// You can construct a concrete instance of `LoggingCaBundleInput` via:
+//
+//	LoggingCaBundleArgs{...}
+type LoggingCaBundleInput interface {
+	pulumi.Input
+
+	ToLoggingCaBundleOutput() LoggingCaBundleOutput
+	ToLoggingCaBundleOutputWithContext(context.Context) LoggingCaBundleOutput
+}
+
+type LoggingCaBundleArgs struct {
+	// The PEM-encoded content of the CA bundle.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The name of the CA bundle.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LoggingCaBundleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingCaBundle)(nil)).Elem()
+}
+
+func (i LoggingCaBundleArgs) ToLoggingCaBundleOutput() LoggingCaBundleOutput {
+	return i.ToLoggingCaBundleOutputWithContext(context.Background())
+}
+
+func (i LoggingCaBundleArgs) ToLoggingCaBundleOutputWithContext(ctx context.Context) LoggingCaBundleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingCaBundleOutput)
+}
+
+// LoggingCaBundleArrayInput is an input type that accepts LoggingCaBundleArray and LoggingCaBundleArrayOutput values.
+// You can construct a concrete instance of `LoggingCaBundleArrayInput` via:
+//
+//	LoggingCaBundleArray{ LoggingCaBundleArgs{...} }
+type LoggingCaBundleArrayInput interface {
+	pulumi.Input
+
+	ToLoggingCaBundleArrayOutput() LoggingCaBundleArrayOutput
+	ToLoggingCaBundleArrayOutputWithContext(context.Context) LoggingCaBundleArrayOutput
+}
+
+type LoggingCaBundleArray []LoggingCaBundleInput
+
+func (LoggingCaBundleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingCaBundle)(nil)).Elem()
+}
+
+func (i LoggingCaBundleArray) ToLoggingCaBundleArrayOutput() LoggingCaBundleArrayOutput {
+	return i.ToLoggingCaBundleArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingCaBundleArray) ToLoggingCaBundleArrayOutputWithContext(ctx context.Context) LoggingCaBundleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingCaBundleArrayOutput)
+}
+
+type LoggingCaBundleOutput struct{ *pulumi.OutputState }
+
+func (LoggingCaBundleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingCaBundle)(nil)).Elem()
+}
+
+func (o LoggingCaBundleOutput) ToLoggingCaBundleOutput() LoggingCaBundleOutput {
+	return o
+}
+
+func (o LoggingCaBundleOutput) ToLoggingCaBundleOutputWithContext(ctx context.Context) LoggingCaBundleOutput {
+	return o
+}
+
+// The PEM-encoded content of the CA bundle.
+func (o LoggingCaBundleOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingCaBundle) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The name of the CA bundle.
+func (o LoggingCaBundleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingCaBundle) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LoggingCaBundleArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingCaBundleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingCaBundle)(nil)).Elem()
+}
+
+func (o LoggingCaBundleArrayOutput) ToLoggingCaBundleArrayOutput() LoggingCaBundleArrayOutput {
+	return o
+}
+
+func (o LoggingCaBundleArrayOutput) ToLoggingCaBundleArrayOutputWithContext(ctx context.Context) LoggingCaBundleArrayOutput {
+	return o
+}
+
+func (o LoggingCaBundleArrayOutput) Index(i pulumi.IntInput) LoggingCaBundleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingCaBundle {
+		return vs[0].([]LoggingCaBundle)[vs[1].(int)]
+	}).(LoggingCaBundleOutput)
+}
+
+type LoggingRemoteForwarding struct {
+	// Whether remote forwarding is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// List of files for remote forwarding output.
+	Files []LoggingRemoteForwardingFile `pulumi:"files"`
+	// Log selectors for remote forwarding, specifying facility and severity.
+	Logs []LoggingRemoteForwardingLog `pulumi:"logs"`
+}
+
+// LoggingRemoteForwardingInput is an input type that accepts LoggingRemoteForwardingArgs and LoggingRemoteForwardingOutput values.
+// You can construct a concrete instance of `LoggingRemoteForwardingInput` via:
+//
+//	LoggingRemoteForwardingArgs{...}
+type LoggingRemoteForwardingInput interface {
+	pulumi.Input
+
+	ToLoggingRemoteForwardingOutput() LoggingRemoteForwardingOutput
+	ToLoggingRemoteForwardingOutputWithContext(context.Context) LoggingRemoteForwardingOutput
+}
+
+type LoggingRemoteForwardingArgs struct {
+	// Whether remote forwarding is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// List of files for remote forwarding output.
+	Files LoggingRemoteForwardingFileArrayInput `pulumi:"files"`
+	// Log selectors for remote forwarding, specifying facility and severity.
+	Logs LoggingRemoteForwardingLogArrayInput `pulumi:"logs"`
+}
+
+func (LoggingRemoteForwardingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingRemoteForwarding)(nil)).Elem()
+}
+
+func (i LoggingRemoteForwardingArgs) ToLoggingRemoteForwardingOutput() LoggingRemoteForwardingOutput {
+	return i.ToLoggingRemoteForwardingOutputWithContext(context.Background())
+}
+
+func (i LoggingRemoteForwardingArgs) ToLoggingRemoteForwardingOutputWithContext(ctx context.Context) LoggingRemoteForwardingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingRemoteForwardingOutput)
+}
+
+func (i LoggingRemoteForwardingArgs) ToLoggingRemoteForwardingPtrOutput() LoggingRemoteForwardingPtrOutput {
+	return i.ToLoggingRemoteForwardingPtrOutputWithContext(context.Background())
+}
+
+func (i LoggingRemoteForwardingArgs) ToLoggingRemoteForwardingPtrOutputWithContext(ctx context.Context) LoggingRemoteForwardingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingRemoteForwardingOutput).ToLoggingRemoteForwardingPtrOutputWithContext(ctx)
+}
+
+// LoggingRemoteForwardingPtrInput is an input type that accepts LoggingRemoteForwardingArgs, LoggingRemoteForwardingPtr and LoggingRemoteForwardingPtrOutput values.
+// You can construct a concrete instance of `LoggingRemoteForwardingPtrInput` via:
+//
+//	        LoggingRemoteForwardingArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoggingRemoteForwardingPtrInput interface {
+	pulumi.Input
+
+	ToLoggingRemoteForwardingPtrOutput() LoggingRemoteForwardingPtrOutput
+	ToLoggingRemoteForwardingPtrOutputWithContext(context.Context) LoggingRemoteForwardingPtrOutput
+}
+
+type loggingRemoteForwardingPtrType LoggingRemoteForwardingArgs
+
+func LoggingRemoteForwardingPtr(v *LoggingRemoteForwardingArgs) LoggingRemoteForwardingPtrInput {
+	return (*loggingRemoteForwardingPtrType)(v)
+}
+
+func (*loggingRemoteForwardingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingRemoteForwarding)(nil)).Elem()
+}
+
+func (i *loggingRemoteForwardingPtrType) ToLoggingRemoteForwardingPtrOutput() LoggingRemoteForwardingPtrOutput {
+	return i.ToLoggingRemoteForwardingPtrOutputWithContext(context.Background())
+}
+
+func (i *loggingRemoteForwardingPtrType) ToLoggingRemoteForwardingPtrOutputWithContext(ctx context.Context) LoggingRemoteForwardingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingRemoteForwardingPtrOutput)
+}
+
+type LoggingRemoteForwardingOutput struct{ *pulumi.OutputState }
+
+func (LoggingRemoteForwardingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingRemoteForwarding)(nil)).Elem()
+}
+
+func (o LoggingRemoteForwardingOutput) ToLoggingRemoteForwardingOutput() LoggingRemoteForwardingOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingOutput) ToLoggingRemoteForwardingOutputWithContext(ctx context.Context) LoggingRemoteForwardingOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingOutput) ToLoggingRemoteForwardingPtrOutput() LoggingRemoteForwardingPtrOutput {
+	return o.ToLoggingRemoteForwardingPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingRemoteForwardingOutput) ToLoggingRemoteForwardingPtrOutputWithContext(ctx context.Context) LoggingRemoteForwardingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingRemoteForwarding) *LoggingRemoteForwarding {
+		return &v
+	}).(LoggingRemoteForwardingPtrOutput)
+}
+
+// Whether remote forwarding is enabled.
+func (o LoggingRemoteForwardingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LoggingRemoteForwarding) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// List of files for remote forwarding output.
+func (o LoggingRemoteForwardingOutput) Files() LoggingRemoteForwardingFileArrayOutput {
+	return o.ApplyT(func(v LoggingRemoteForwarding) []LoggingRemoteForwardingFile { return v.Files }).(LoggingRemoteForwardingFileArrayOutput)
+}
+
+// Log selectors for remote forwarding, specifying facility and severity.
+func (o LoggingRemoteForwardingOutput) Logs() LoggingRemoteForwardingLogArrayOutput {
+	return o.ApplyT(func(v LoggingRemoteForwarding) []LoggingRemoteForwardingLog { return v.Logs }).(LoggingRemoteForwardingLogArrayOutput)
+}
+
+type LoggingRemoteForwardingPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingRemoteForwardingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingRemoteForwarding)(nil)).Elem()
+}
+
+func (o LoggingRemoteForwardingPtrOutput) ToLoggingRemoteForwardingPtrOutput() LoggingRemoteForwardingPtrOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingPtrOutput) ToLoggingRemoteForwardingPtrOutputWithContext(ctx context.Context) LoggingRemoteForwardingPtrOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingPtrOutput) Elem() LoggingRemoteForwardingOutput {
+	return o.ApplyT(func(v *LoggingRemoteForwarding) LoggingRemoteForwarding {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingRemoteForwarding
+		return ret
+	}).(LoggingRemoteForwardingOutput)
+}
+
+// Whether remote forwarding is enabled.
+func (o LoggingRemoteForwardingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoggingRemoteForwarding) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of files for remote forwarding output.
+func (o LoggingRemoteForwardingPtrOutput) Files() LoggingRemoteForwardingFileArrayOutput {
+	return o.ApplyT(func(v *LoggingRemoteForwarding) []LoggingRemoteForwardingFile {
+		if v == nil {
+			return nil
+		}
+		return v.Files
+	}).(LoggingRemoteForwardingFileArrayOutput)
+}
+
+// Log selectors for remote forwarding, specifying facility and severity.
+func (o LoggingRemoteForwardingPtrOutput) Logs() LoggingRemoteForwardingLogArrayOutput {
+	return o.ApplyT(func(v *LoggingRemoteForwarding) []LoggingRemoteForwardingLog {
+		if v == nil {
+			return nil
+		}
+		return v.Logs
+	}).(LoggingRemoteForwardingLogArrayOutput)
+}
+
+type LoggingRemoteForwardingFile struct {
+	// The name of the file for log output.
+	Name string `pulumi:"name"`
+}
+
+// LoggingRemoteForwardingFileInput is an input type that accepts LoggingRemoteForwardingFileArgs and LoggingRemoteForwardingFileOutput values.
+// You can construct a concrete instance of `LoggingRemoteForwardingFileInput` via:
+//
+//	LoggingRemoteForwardingFileArgs{...}
+type LoggingRemoteForwardingFileInput interface {
+	pulumi.Input
+
+	ToLoggingRemoteForwardingFileOutput() LoggingRemoteForwardingFileOutput
+	ToLoggingRemoteForwardingFileOutputWithContext(context.Context) LoggingRemoteForwardingFileOutput
+}
+
+type LoggingRemoteForwardingFileArgs struct {
+	// The name of the file for log output.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LoggingRemoteForwardingFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingRemoteForwardingFile)(nil)).Elem()
+}
+
+func (i LoggingRemoteForwardingFileArgs) ToLoggingRemoteForwardingFileOutput() LoggingRemoteForwardingFileOutput {
+	return i.ToLoggingRemoteForwardingFileOutputWithContext(context.Background())
+}
+
+func (i LoggingRemoteForwardingFileArgs) ToLoggingRemoteForwardingFileOutputWithContext(ctx context.Context) LoggingRemoteForwardingFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingRemoteForwardingFileOutput)
+}
+
+// LoggingRemoteForwardingFileArrayInput is an input type that accepts LoggingRemoteForwardingFileArray and LoggingRemoteForwardingFileArrayOutput values.
+// You can construct a concrete instance of `LoggingRemoteForwardingFileArrayInput` via:
+//
+//	LoggingRemoteForwardingFileArray{ LoggingRemoteForwardingFileArgs{...} }
+type LoggingRemoteForwardingFileArrayInput interface {
+	pulumi.Input
+
+	ToLoggingRemoteForwardingFileArrayOutput() LoggingRemoteForwardingFileArrayOutput
+	ToLoggingRemoteForwardingFileArrayOutputWithContext(context.Context) LoggingRemoteForwardingFileArrayOutput
+}
+
+type LoggingRemoteForwardingFileArray []LoggingRemoteForwardingFileInput
+
+func (LoggingRemoteForwardingFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingRemoteForwardingFile)(nil)).Elem()
+}
+
+func (i LoggingRemoteForwardingFileArray) ToLoggingRemoteForwardingFileArrayOutput() LoggingRemoteForwardingFileArrayOutput {
+	return i.ToLoggingRemoteForwardingFileArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingRemoteForwardingFileArray) ToLoggingRemoteForwardingFileArrayOutputWithContext(ctx context.Context) LoggingRemoteForwardingFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingRemoteForwardingFileArrayOutput)
+}
+
+type LoggingRemoteForwardingFileOutput struct{ *pulumi.OutputState }
+
+func (LoggingRemoteForwardingFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingRemoteForwardingFile)(nil)).Elem()
+}
+
+func (o LoggingRemoteForwardingFileOutput) ToLoggingRemoteForwardingFileOutput() LoggingRemoteForwardingFileOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingFileOutput) ToLoggingRemoteForwardingFileOutputWithContext(ctx context.Context) LoggingRemoteForwardingFileOutput {
+	return o
+}
+
+// The name of the file for log output.
+func (o LoggingRemoteForwardingFileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingRemoteForwardingFile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LoggingRemoteForwardingFileArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingRemoteForwardingFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingRemoteForwardingFile)(nil)).Elem()
+}
+
+func (o LoggingRemoteForwardingFileArrayOutput) ToLoggingRemoteForwardingFileArrayOutput() LoggingRemoteForwardingFileArrayOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingFileArrayOutput) ToLoggingRemoteForwardingFileArrayOutputWithContext(ctx context.Context) LoggingRemoteForwardingFileArrayOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingFileArrayOutput) Index(i pulumi.IntInput) LoggingRemoteForwardingFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingRemoteForwardingFile {
+		return vs[0].([]LoggingRemoteForwardingFile)[vs[1].(int)]
+	}).(LoggingRemoteForwardingFileOutput)
+}
+
+type LoggingRemoteForwardingLog struct {
+	// The syslog facility for remote forwarding (local0 or authpriv).
+	Facility string `pulumi:"facility"`
+	// The syslog severity for remote forwarding.
+	Severity string `pulumi:"severity"`
+}
+
+// LoggingRemoteForwardingLogInput is an input type that accepts LoggingRemoteForwardingLogArgs and LoggingRemoteForwardingLogOutput values.
+// You can construct a concrete instance of `LoggingRemoteForwardingLogInput` via:
+//
+//	LoggingRemoteForwardingLogArgs{...}
+type LoggingRemoteForwardingLogInput interface {
+	pulumi.Input
+
+	ToLoggingRemoteForwardingLogOutput() LoggingRemoteForwardingLogOutput
+	ToLoggingRemoteForwardingLogOutputWithContext(context.Context) LoggingRemoteForwardingLogOutput
+}
+
+type LoggingRemoteForwardingLogArgs struct {
+	// The syslog facility for remote forwarding (local0 or authpriv).
+	Facility pulumi.StringInput `pulumi:"facility"`
+	// The syslog severity for remote forwarding.
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (LoggingRemoteForwardingLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingRemoteForwardingLog)(nil)).Elem()
+}
+
+func (i LoggingRemoteForwardingLogArgs) ToLoggingRemoteForwardingLogOutput() LoggingRemoteForwardingLogOutput {
+	return i.ToLoggingRemoteForwardingLogOutputWithContext(context.Background())
+}
+
+func (i LoggingRemoteForwardingLogArgs) ToLoggingRemoteForwardingLogOutputWithContext(ctx context.Context) LoggingRemoteForwardingLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingRemoteForwardingLogOutput)
+}
+
+// LoggingRemoteForwardingLogArrayInput is an input type that accepts LoggingRemoteForwardingLogArray and LoggingRemoteForwardingLogArrayOutput values.
+// You can construct a concrete instance of `LoggingRemoteForwardingLogArrayInput` via:
+//
+//	LoggingRemoteForwardingLogArray{ LoggingRemoteForwardingLogArgs{...} }
+type LoggingRemoteForwardingLogArrayInput interface {
+	pulumi.Input
+
+	ToLoggingRemoteForwardingLogArrayOutput() LoggingRemoteForwardingLogArrayOutput
+	ToLoggingRemoteForwardingLogArrayOutputWithContext(context.Context) LoggingRemoteForwardingLogArrayOutput
+}
+
+type LoggingRemoteForwardingLogArray []LoggingRemoteForwardingLogInput
+
+func (LoggingRemoteForwardingLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingRemoteForwardingLog)(nil)).Elem()
+}
+
+func (i LoggingRemoteForwardingLogArray) ToLoggingRemoteForwardingLogArrayOutput() LoggingRemoteForwardingLogArrayOutput {
+	return i.ToLoggingRemoteForwardingLogArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingRemoteForwardingLogArray) ToLoggingRemoteForwardingLogArrayOutputWithContext(ctx context.Context) LoggingRemoteForwardingLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingRemoteForwardingLogArrayOutput)
+}
+
+type LoggingRemoteForwardingLogOutput struct{ *pulumi.OutputState }
+
+func (LoggingRemoteForwardingLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingRemoteForwardingLog)(nil)).Elem()
+}
+
+func (o LoggingRemoteForwardingLogOutput) ToLoggingRemoteForwardingLogOutput() LoggingRemoteForwardingLogOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingLogOutput) ToLoggingRemoteForwardingLogOutputWithContext(ctx context.Context) LoggingRemoteForwardingLogOutput {
+	return o
+}
+
+// The syslog facility for remote forwarding (local0 or authpriv).
+func (o LoggingRemoteForwardingLogOutput) Facility() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingRemoteForwardingLog) string { return v.Facility }).(pulumi.StringOutput)
+}
+
+// The syslog severity for remote forwarding.
+func (o LoggingRemoteForwardingLogOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingRemoteForwardingLog) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type LoggingRemoteForwardingLogArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingRemoteForwardingLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingRemoteForwardingLog)(nil)).Elem()
+}
+
+func (o LoggingRemoteForwardingLogArrayOutput) ToLoggingRemoteForwardingLogArrayOutput() LoggingRemoteForwardingLogArrayOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingLogArrayOutput) ToLoggingRemoteForwardingLogArrayOutputWithContext(ctx context.Context) LoggingRemoteForwardingLogArrayOutput {
+	return o
+}
+
+func (o LoggingRemoteForwardingLogArrayOutput) Index(i pulumi.IntInput) LoggingRemoteForwardingLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingRemoteForwardingLog {
+		return vs[0].([]LoggingRemoteForwardingLog)[vs[1].(int)]
+	}).(LoggingRemoteForwardingLogOutput)
+}
+
+type LoggingServer struct {
+	// The IP address or hostname of the remote logging server.
+	Address string `pulumi:"address"`
+	// Whether authentication is enabled for TCP protocol.
+	Authentication *bool `pulumi:"authentication"`
+	// Log selectors for this server, specifying facility and severity.
+	Logs []LoggingServerLog `pulumi:"logs"`
+	// The port number for the remote logging server (1-65535).
+	Port int `pulumi:"port"`
+	// The protocol used for logging (tcp or udp).
+	Protocol string `pulumi:"protocol"`
+}
+
+// LoggingServerInput is an input type that accepts LoggingServerArgs and LoggingServerOutput values.
+// You can construct a concrete instance of `LoggingServerInput` via:
+//
+//	LoggingServerArgs{...}
+type LoggingServerInput interface {
+	pulumi.Input
+
+	ToLoggingServerOutput() LoggingServerOutput
+	ToLoggingServerOutputWithContext(context.Context) LoggingServerOutput
+}
+
+type LoggingServerArgs struct {
+	// The IP address or hostname of the remote logging server.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Whether authentication is enabled for TCP protocol.
+	Authentication pulumi.BoolPtrInput `pulumi:"authentication"`
+	// Log selectors for this server, specifying facility and severity.
+	Logs LoggingServerLogArrayInput `pulumi:"logs"`
+	// The port number for the remote logging server (1-65535).
+	Port pulumi.IntInput `pulumi:"port"`
+	// The protocol used for logging (tcp or udp).
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (LoggingServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingServer)(nil)).Elem()
+}
+
+func (i LoggingServerArgs) ToLoggingServerOutput() LoggingServerOutput {
+	return i.ToLoggingServerOutputWithContext(context.Background())
+}
+
+func (i LoggingServerArgs) ToLoggingServerOutputWithContext(ctx context.Context) LoggingServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingServerOutput)
+}
+
+// LoggingServerArrayInput is an input type that accepts LoggingServerArray and LoggingServerArrayOutput values.
+// You can construct a concrete instance of `LoggingServerArrayInput` via:
+//
+//	LoggingServerArray{ LoggingServerArgs{...} }
+type LoggingServerArrayInput interface {
+	pulumi.Input
+
+	ToLoggingServerArrayOutput() LoggingServerArrayOutput
+	ToLoggingServerArrayOutputWithContext(context.Context) LoggingServerArrayOutput
+}
+
+type LoggingServerArray []LoggingServerInput
+
+func (LoggingServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingServer)(nil)).Elem()
+}
+
+func (i LoggingServerArray) ToLoggingServerArrayOutput() LoggingServerArrayOutput {
+	return i.ToLoggingServerArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingServerArray) ToLoggingServerArrayOutputWithContext(ctx context.Context) LoggingServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingServerArrayOutput)
+}
+
+type LoggingServerOutput struct{ *pulumi.OutputState }
+
+func (LoggingServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingServer)(nil)).Elem()
+}
+
+func (o LoggingServerOutput) ToLoggingServerOutput() LoggingServerOutput {
+	return o
+}
+
+func (o LoggingServerOutput) ToLoggingServerOutputWithContext(ctx context.Context) LoggingServerOutput {
+	return o
+}
+
+// The IP address or hostname of the remote logging server.
+func (o LoggingServerOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingServer) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Whether authentication is enabled for TCP protocol.
+func (o LoggingServerOutput) Authentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoggingServer) *bool { return v.Authentication }).(pulumi.BoolPtrOutput)
+}
+
+// Log selectors for this server, specifying facility and severity.
+func (o LoggingServerOutput) Logs() LoggingServerLogArrayOutput {
+	return o.ApplyT(func(v LoggingServer) []LoggingServerLog { return v.Logs }).(LoggingServerLogArrayOutput)
+}
+
+// The port number for the remote logging server (1-65535).
+func (o LoggingServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LoggingServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The protocol used for logging (tcp or udp).
+func (o LoggingServerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingServer) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type LoggingServerArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingServer)(nil)).Elem()
+}
+
+func (o LoggingServerArrayOutput) ToLoggingServerArrayOutput() LoggingServerArrayOutput {
+	return o
+}
+
+func (o LoggingServerArrayOutput) ToLoggingServerArrayOutputWithContext(ctx context.Context) LoggingServerArrayOutput {
+	return o
+}
+
+func (o LoggingServerArrayOutput) Index(i pulumi.IntInput) LoggingServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingServer {
+		return vs[0].([]LoggingServer)[vs[1].(int)]
+	}).(LoggingServerOutput)
+}
+
+type LoggingServerLog struct {
+	// The syslog facility (e.g., local0, authpriv).
+	Facility string `pulumi:"facility"`
+	// The syslog severity (e.g., debug, informational, notice, warning, error, critical, alert, emergency).
+	Severity string `pulumi:"severity"`
+}
+
+// LoggingServerLogInput is an input type that accepts LoggingServerLogArgs and LoggingServerLogOutput values.
+// You can construct a concrete instance of `LoggingServerLogInput` via:
+//
+//	LoggingServerLogArgs{...}
+type LoggingServerLogInput interface {
+	pulumi.Input
+
+	ToLoggingServerLogOutput() LoggingServerLogOutput
+	ToLoggingServerLogOutputWithContext(context.Context) LoggingServerLogOutput
+}
+
+type LoggingServerLogArgs struct {
+	// The syslog facility (e.g., local0, authpriv).
+	Facility pulumi.StringInput `pulumi:"facility"`
+	// The syslog severity (e.g., debug, informational, notice, warning, error, critical, alert, emergency).
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (LoggingServerLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingServerLog)(nil)).Elem()
+}
+
+func (i LoggingServerLogArgs) ToLoggingServerLogOutput() LoggingServerLogOutput {
+	return i.ToLoggingServerLogOutputWithContext(context.Background())
+}
+
+func (i LoggingServerLogArgs) ToLoggingServerLogOutputWithContext(ctx context.Context) LoggingServerLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingServerLogOutput)
+}
+
+// LoggingServerLogArrayInput is an input type that accepts LoggingServerLogArray and LoggingServerLogArrayOutput values.
+// You can construct a concrete instance of `LoggingServerLogArrayInput` via:
+//
+//	LoggingServerLogArray{ LoggingServerLogArgs{...} }
+type LoggingServerLogArrayInput interface {
+	pulumi.Input
+
+	ToLoggingServerLogArrayOutput() LoggingServerLogArrayOutput
+	ToLoggingServerLogArrayOutputWithContext(context.Context) LoggingServerLogArrayOutput
+}
+
+type LoggingServerLogArray []LoggingServerLogInput
+
+func (LoggingServerLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingServerLog)(nil)).Elem()
+}
+
+func (i LoggingServerLogArray) ToLoggingServerLogArrayOutput() LoggingServerLogArrayOutput {
+	return i.ToLoggingServerLogArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingServerLogArray) ToLoggingServerLogArrayOutputWithContext(ctx context.Context) LoggingServerLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingServerLogArrayOutput)
+}
+
+type LoggingServerLogOutput struct{ *pulumi.OutputState }
+
+func (LoggingServerLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingServerLog)(nil)).Elem()
+}
+
+func (o LoggingServerLogOutput) ToLoggingServerLogOutput() LoggingServerLogOutput {
+	return o
+}
+
+func (o LoggingServerLogOutput) ToLoggingServerLogOutputWithContext(ctx context.Context) LoggingServerLogOutput {
+	return o
+}
+
+// The syslog facility (e.g., local0, authpriv).
+func (o LoggingServerLogOutput) Facility() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingServerLog) string { return v.Facility }).(pulumi.StringOutput)
+}
+
+// The syslog severity (e.g., debug, informational, notice, warning, error, critical, alert, emergency).
+func (o LoggingServerLogOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingServerLog) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type LoggingServerLogArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingServerLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingServerLog)(nil)).Elem()
+}
+
+func (o LoggingServerLogArrayOutput) ToLoggingServerLogArrayOutput() LoggingServerLogArrayOutput {
+	return o
+}
+
+func (o LoggingServerLogArrayOutput) ToLoggingServerLogArrayOutputWithContext(ctx context.Context) LoggingServerLogArrayOutput {
+	return o
+}
+
+func (o LoggingServerLogArrayOutput) Index(i pulumi.IntInput) LoggingServerLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingServerLog {
+		return vs[0].([]LoggingServerLog)[vs[1].(int)]
+	}).(LoggingServerLogOutput)
+}
+
+type LoggingTls struct {
+	// TLS certificate for secure logging.
+	Certificate string `pulumi:"certificate"`
+	// TLS private key for secure logging (sensitive).
+	Key string `pulumi:"key"`
+}
+
+// LoggingTlsInput is an input type that accepts LoggingTlsArgs and LoggingTlsOutput values.
+// You can construct a concrete instance of `LoggingTlsInput` via:
+//
+//	LoggingTlsArgs{...}
+type LoggingTlsInput interface {
+	pulumi.Input
+
+	ToLoggingTlsOutput() LoggingTlsOutput
+	ToLoggingTlsOutputWithContext(context.Context) LoggingTlsOutput
+}
+
+type LoggingTlsArgs struct {
+	// TLS certificate for secure logging.
+	Certificate pulumi.StringInput `pulumi:"certificate"`
+	// TLS private key for secure logging (sensitive).
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (LoggingTlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingTls)(nil)).Elem()
+}
+
+func (i LoggingTlsArgs) ToLoggingTlsOutput() LoggingTlsOutput {
+	return i.ToLoggingTlsOutputWithContext(context.Background())
+}
+
+func (i LoggingTlsArgs) ToLoggingTlsOutputWithContext(ctx context.Context) LoggingTlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingTlsOutput)
+}
+
+func (i LoggingTlsArgs) ToLoggingTlsPtrOutput() LoggingTlsPtrOutput {
+	return i.ToLoggingTlsPtrOutputWithContext(context.Background())
+}
+
+func (i LoggingTlsArgs) ToLoggingTlsPtrOutputWithContext(ctx context.Context) LoggingTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingTlsOutput).ToLoggingTlsPtrOutputWithContext(ctx)
+}
+
+// LoggingTlsPtrInput is an input type that accepts LoggingTlsArgs, LoggingTlsPtr and LoggingTlsPtrOutput values.
+// You can construct a concrete instance of `LoggingTlsPtrInput` via:
+//
+//	        LoggingTlsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoggingTlsPtrInput interface {
+	pulumi.Input
+
+	ToLoggingTlsPtrOutput() LoggingTlsPtrOutput
+	ToLoggingTlsPtrOutputWithContext(context.Context) LoggingTlsPtrOutput
+}
+
+type loggingTlsPtrType LoggingTlsArgs
+
+func LoggingTlsPtr(v *LoggingTlsArgs) LoggingTlsPtrInput {
+	return (*loggingTlsPtrType)(v)
+}
+
+func (*loggingTlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingTls)(nil)).Elem()
+}
+
+func (i *loggingTlsPtrType) ToLoggingTlsPtrOutput() LoggingTlsPtrOutput {
+	return i.ToLoggingTlsPtrOutputWithContext(context.Background())
+}
+
+func (i *loggingTlsPtrType) ToLoggingTlsPtrOutputWithContext(ctx context.Context) LoggingTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingTlsPtrOutput)
+}
+
+type LoggingTlsOutput struct{ *pulumi.OutputState }
+
+func (LoggingTlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingTls)(nil)).Elem()
+}
+
+func (o LoggingTlsOutput) ToLoggingTlsOutput() LoggingTlsOutput {
+	return o
+}
+
+func (o LoggingTlsOutput) ToLoggingTlsOutputWithContext(ctx context.Context) LoggingTlsOutput {
+	return o
+}
+
+func (o LoggingTlsOutput) ToLoggingTlsPtrOutput() LoggingTlsPtrOutput {
+	return o.ToLoggingTlsPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingTlsOutput) ToLoggingTlsPtrOutputWithContext(ctx context.Context) LoggingTlsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingTls) *LoggingTls {
+		return &v
+	}).(LoggingTlsPtrOutput)
+}
+
+// TLS certificate for secure logging.
+func (o LoggingTlsOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingTls) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// TLS private key for secure logging (sensitive).
+func (o LoggingTlsOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingTls) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type LoggingTlsPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingTlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingTls)(nil)).Elem()
+}
+
+func (o LoggingTlsPtrOutput) ToLoggingTlsPtrOutput() LoggingTlsPtrOutput {
+	return o
+}
+
+func (o LoggingTlsPtrOutput) ToLoggingTlsPtrOutputWithContext(ctx context.Context) LoggingTlsPtrOutput {
+	return o
+}
+
+func (o LoggingTlsPtrOutput) Elem() LoggingTlsOutput {
+	return o.ApplyT(func(v *LoggingTls) LoggingTls {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingTls
+		return ret
+	}).(LoggingTlsOutput)
+}
+
+// TLS certificate for secure logging.
+func (o LoggingTlsPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingTls) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// TLS private key for secure logging (sensitive).
+func (o LoggingTlsPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingTls) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetDeviceInfoControllerImage struct {
 	// OS of the ISO image
 	Os string `pulumi:"os"`
@@ -640,6 +1519,20 @@ func (o GetDeviceInfoVlanArrayOutput) Index(i pulumi.IntInput) GetDeviceInfoVlan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingCaBundleInput)(nil)).Elem(), LoggingCaBundleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingCaBundleArrayInput)(nil)).Elem(), LoggingCaBundleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingRemoteForwardingInput)(nil)).Elem(), LoggingRemoteForwardingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingRemoteForwardingPtrInput)(nil)).Elem(), LoggingRemoteForwardingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingRemoteForwardingFileInput)(nil)).Elem(), LoggingRemoteForwardingFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingRemoteForwardingFileArrayInput)(nil)).Elem(), LoggingRemoteForwardingFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingRemoteForwardingLogInput)(nil)).Elem(), LoggingRemoteForwardingLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingRemoteForwardingLogArrayInput)(nil)).Elem(), LoggingRemoteForwardingLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingServerInput)(nil)).Elem(), LoggingServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingServerArrayInput)(nil)).Elem(), LoggingServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingServerLogInput)(nil)).Elem(), LoggingServerLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingServerLogArrayInput)(nil)).Elem(), LoggingServerLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingTlsInput)(nil)).Elem(), LoggingTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingTlsPtrInput)(nil)).Elem(), LoggingTlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceInfoControllerImageInput)(nil)).Elem(), GetDeviceInfoControllerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceInfoControllerImageArrayInput)(nil)).Elem(), GetDeviceInfoControllerImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceInfoInterfaceInput)(nil)).Elem(), GetDeviceInfoInterfaceArgs{})
@@ -650,6 +1543,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceInfoTenantImageArrayInput)(nil)).Elem(), GetDeviceInfoTenantImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceInfoVlanInput)(nil)).Elem(), GetDeviceInfoVlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceInfoVlanArrayInput)(nil)).Elem(), GetDeviceInfoVlanArray{})
+	pulumi.RegisterOutputType(LoggingCaBundleOutput{})
+	pulumi.RegisterOutputType(LoggingCaBundleArrayOutput{})
+	pulumi.RegisterOutputType(LoggingRemoteForwardingOutput{})
+	pulumi.RegisterOutputType(LoggingRemoteForwardingPtrOutput{})
+	pulumi.RegisterOutputType(LoggingRemoteForwardingFileOutput{})
+	pulumi.RegisterOutputType(LoggingRemoteForwardingFileArrayOutput{})
+	pulumi.RegisterOutputType(LoggingRemoteForwardingLogOutput{})
+	pulumi.RegisterOutputType(LoggingRemoteForwardingLogArrayOutput{})
+	pulumi.RegisterOutputType(LoggingServerOutput{})
+	pulumi.RegisterOutputType(LoggingServerArrayOutput{})
+	pulumi.RegisterOutputType(LoggingServerLogOutput{})
+	pulumi.RegisterOutputType(LoggingServerLogArrayOutput{})
+	pulumi.RegisterOutputType(LoggingTlsOutput{})
+	pulumi.RegisterOutputType(LoggingTlsPtrOutput{})
 	pulumi.RegisterOutputType(GetDeviceInfoControllerImageOutput{})
 	pulumi.RegisterOutputType(GetDeviceInfoControllerImageArrayOutput{})
 	pulumi.RegisterOutputType(GetDeviceInfoInterfaceOutput{})

@@ -14,14 +14,262 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
+    'LoggingCaBundle',
+    'LoggingRemoteForwarding',
+    'LoggingRemoteForwardingFile',
+    'LoggingRemoteForwardingLog',
+    'LoggingServer',
+    'LoggingServerLog',
+    'LoggingTls',
     'GetDeviceInfoControllerImageResult',
     'GetDeviceInfoInterfaceResult',
     'GetDeviceInfoPartitionImageResult',
     'GetDeviceInfoTenantImageResult',
     'GetDeviceInfoVlanResult',
 ]
+
+@pulumi.output_type
+class LoggingCaBundle(dict):
+    def __init__(__self__, *,
+                 content: builtins.str,
+                 name: builtins.str):
+        """
+        :param builtins.str content: The PEM-encoded content of the CA bundle.
+        :param builtins.str name: The name of the CA bundle.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def content(self) -> builtins.str:
+        """
+        The PEM-encoded content of the CA bundle.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the CA bundle.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class LoggingRemoteForwarding(dict):
+    def __init__(__self__, *,
+                 enabled: builtins.bool,
+                 files: Optional[Sequence['outputs.LoggingRemoteForwardingFile']] = None,
+                 logs: Optional[Sequence['outputs.LoggingRemoteForwardingLog']] = None):
+        """
+        :param builtins.bool enabled: Whether remote forwarding is enabled.
+        :param Sequence['LoggingRemoteForwardingFileArgs'] files: List of files for remote forwarding output.
+        :param Sequence['LoggingRemoteForwardingLogArgs'] logs: Log selectors for remote forwarding, specifying facility and severity.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if files is not None:
+            pulumi.set(__self__, "files", files)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Whether remote forwarding is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def files(self) -> Optional[Sequence['outputs.LoggingRemoteForwardingFile']]:
+        """
+        List of files for remote forwarding output.
+        """
+        return pulumi.get(self, "files")
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[Sequence['outputs.LoggingRemoteForwardingLog']]:
+        """
+        Log selectors for remote forwarding, specifying facility and severity.
+        """
+        return pulumi.get(self, "logs")
+
+
+@pulumi.output_type
+class LoggingRemoteForwardingFile(dict):
+    def __init__(__self__, *,
+                 name: builtins.str):
+        """
+        :param builtins.str name: The name of the file for log output.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the file for log output.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class LoggingRemoteForwardingLog(dict):
+    def __init__(__self__, *,
+                 facility: builtins.str,
+                 severity: builtins.str):
+        """
+        :param builtins.str facility: The syslog facility for remote forwarding (local0 or authpriv).
+        :param builtins.str severity: The syslog severity for remote forwarding.
+        """
+        pulumi.set(__self__, "facility", facility)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def facility(self) -> builtins.str:
+        """
+        The syslog facility for remote forwarding (local0 or authpriv).
+        """
+        return pulumi.get(self, "facility")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> builtins.str:
+        """
+        The syslog severity for remote forwarding.
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class LoggingServer(dict):
+    def __init__(__self__, *,
+                 address: builtins.str,
+                 port: builtins.int,
+                 protocol: builtins.str,
+                 authentication: Optional[builtins.bool] = None,
+                 logs: Optional[Sequence['outputs.LoggingServerLog']] = None):
+        """
+        :param builtins.str address: The IP address or hostname of the remote logging server.
+        :param builtins.int port: The port number for the remote logging server (1-65535).
+        :param builtins.str protocol: The protocol used for logging (tcp or udp).
+        :param builtins.bool authentication: Whether authentication is enabled for TCP protocol.
+        :param Sequence['LoggingServerLogArgs'] logs: Log selectors for this server, specifying facility and severity.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+
+    @property
+    @pulumi.getter
+    def address(self) -> builtins.str:
+        """
+        The IP address or hostname of the remote logging server.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def port(self) -> builtins.int:
+        """
+        The port number for the remote logging server (1-65535).
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> builtins.str:
+        """
+        The protocol used for logging (tcp or udp).
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional[builtins.bool]:
+        """
+        Whether authentication is enabled for TCP protocol.
+        """
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[Sequence['outputs.LoggingServerLog']]:
+        """
+        Log selectors for this server, specifying facility and severity.
+        """
+        return pulumi.get(self, "logs")
+
+
+@pulumi.output_type
+class LoggingServerLog(dict):
+    def __init__(__self__, *,
+                 facility: builtins.str,
+                 severity: builtins.str):
+        """
+        :param builtins.str facility: The syslog facility (e.g., local0, authpriv).
+        :param builtins.str severity: The syslog severity (e.g., debug, informational, notice, warning, error, critical, alert, emergency).
+        """
+        pulumi.set(__self__, "facility", facility)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def facility(self) -> builtins.str:
+        """
+        The syslog facility (e.g., local0, authpriv).
+        """
+        return pulumi.get(self, "facility")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> builtins.str:
+        """
+        The syslog severity (e.g., debug, informational, notice, warning, error, critical, alert, emergency).
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class LoggingTls(dict):
+    def __init__(__self__, *,
+                 certificate: builtins.str,
+                 key: builtins.str):
+        """
+        :param builtins.str certificate: TLS certificate for secure logging.
+        :param builtins.str key: TLS private key for secure logging (sensitive).
+        """
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> builtins.str:
+        """
+        TLS certificate for secure logging.
+        """
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter
+    def key(self) -> builtins.str:
+        """
+        TLS private key for secure logging (sensitive).
+        """
+        return pulumi.get(self, "key")
+
 
 @pulumi.output_type
 class GetDeviceInfoControllerImageResult(dict):

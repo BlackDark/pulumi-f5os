@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Lag{}
 	case "f5os:index/license:License":
 		r = &License{}
+	case "f5os:index/logging:Logging":
+		r = &Logging{}
+	case "f5os:index/ntpServer:NtpServer":
+		r = &NtpServer{}
 	case "f5os:index/partition:Partition":
 		r = &Partition{}
 	case "f5os:index/partitionChangePassword:PartitionChangePassword":
@@ -101,6 +105,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"f5os",
 		"index/license",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"f5os",
+		"index/logging",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"f5os",
+		"index/ntpServer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

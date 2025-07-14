@@ -40,6 +40,16 @@ export type License = import("./license").License;
 export const License: typeof import("./license").License = null as any;
 utilities.lazyLoad(exports, ["License"], () => require("./license"));
 
+export { LoggingArgs, LoggingState } from "./logging";
+export type Logging = import("./logging").Logging;
+export const Logging: typeof import("./logging").Logging = null as any;
+utilities.lazyLoad(exports, ["Logging"], () => require("./logging"));
+
+export { NtpServerArgs, NtpServerState } from "./ntpServer";
+export type NtpServer = import("./ntpServer").NtpServer;
+export const NtpServer: typeof import("./ntpServer").NtpServer = null as any;
+utilities.lazyLoad(exports, ["NtpServer"], () => require("./ntpServer"));
+
 export { PartitionArgs, PartitionState } from "./partition";
 export type Partition = import("./partition").Partition;
 export const Partition: typeof import("./partition").Partition = null as any;
@@ -86,12 +96,10 @@ utilities.lazyLoad(exports, ["Vlan"], () => require("./vlan"));
 
 // Export sub-modules:
 import * as config from "./config";
-import * as region from "./region";
 import * as types from "./types";
 
 export {
     config,
-    region,
     types,
 };
 
@@ -109,6 +117,10 @@ const _module = {
                 return new Lag(name, <any>undefined, { urn })
             case "f5os:index/license:License":
                 return new License(name, <any>undefined, { urn })
+            case "f5os:index/logging:Logging":
+                return new Logging(name, <any>undefined, { urn })
+            case "f5os:index/ntpServer:NtpServer":
+                return new NtpServer(name, <any>undefined, { urn })
             case "f5os:index/partition:Partition":
                 return new Partition(name, <any>undefined, { urn })
             case "f5os:index/partitionChangePassword:PartitionChangePassword":
@@ -135,6 +147,8 @@ pulumi.runtime.registerResourceModule("f5os", "index/dns", _module)
 pulumi.runtime.registerResourceModule("f5os", "index/interface", _module)
 pulumi.runtime.registerResourceModule("f5os", "index/lag", _module)
 pulumi.runtime.registerResourceModule("f5os", "index/license", _module)
+pulumi.runtime.registerResourceModule("f5os", "index/logging", _module)
+pulumi.runtime.registerResourceModule("f5os", "index/ntpServer", _module)
 pulumi.runtime.registerResourceModule("f5os", "index/partition", _module)
 pulumi.runtime.registerResourceModule("f5os", "index/partitionChangePassword", _module)
 pulumi.runtime.registerResourceModule("f5os", "index/primarykey", _module)

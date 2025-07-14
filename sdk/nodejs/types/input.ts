@@ -4,5 +4,92 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
-import * as enums from "../types/enums";
 
+export interface LoggingCaBundle {
+    /**
+     * The PEM-encoded content of the CA bundle.
+     */
+    content: pulumi.Input<string>;
+    /**
+     * The name of the CA bundle.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface LoggingRemoteForwarding {
+    /**
+     * Whether remote forwarding is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * List of files for remote forwarding output.
+     */
+    files?: pulumi.Input<pulumi.Input<inputs.LoggingRemoteForwardingFile>[]>;
+    /**
+     * Log selectors for remote forwarding, specifying facility and severity.
+     */
+    logs?: pulumi.Input<pulumi.Input<inputs.LoggingRemoteForwardingLog>[]>;
+}
+
+export interface LoggingRemoteForwardingFile {
+    /**
+     * The name of the file for log output.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface LoggingRemoteForwardingLog {
+    /**
+     * The syslog facility for remote forwarding (local0 or authpriv).
+     */
+    facility: pulumi.Input<string>;
+    /**
+     * The syslog severity for remote forwarding.
+     */
+    severity: pulumi.Input<string>;
+}
+
+export interface LoggingServer {
+    /**
+     * The IP address or hostname of the remote logging server.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * Whether authentication is enabled for TCP protocol.
+     */
+    authentication?: pulumi.Input<boolean>;
+    /**
+     * Log selectors for this server, specifying facility and severity.
+     */
+    logs?: pulumi.Input<pulumi.Input<inputs.LoggingServerLog>[]>;
+    /**
+     * The port number for the remote logging server (1-65535).
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The protocol used for logging (tcp or udp).
+     */
+    protocol: pulumi.Input<string>;
+}
+
+export interface LoggingServerLog {
+    /**
+     * The syslog facility (e.g., local0, authpriv).
+     */
+    facility: pulumi.Input<string>;
+    /**
+     * The syslog severity (e.g., debug, informational, notice, warning, error, critical, alert, emergency).
+     */
+    severity: pulumi.Input<string>;
+}
+
+export interface LoggingTls {
+    /**
+     * TLS certificate for secure logging.
+     */
+    certificate: pulumi.Input<string>;
+    /**
+     * TLS private key for secure logging (sensitive).
+     */
+    key: pulumi.Input<string>;
+}
