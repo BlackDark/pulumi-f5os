@@ -13,6 +13,8 @@ from .get_tenant_image import *
 from .interface import *
 from .lag import *
 from .license import *
+from .logging import *
+from .ntp_server import *
 from .partition import *
 from .partition_change_password import *
 from .primarykey import *
@@ -22,17 +24,15 @@ from .tenant import *
 from .tenant_image import *
 from .tls_cert_key import *
 from .vlan import *
+from ._inputs import *
 from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
     import pulumi_f5os.config as __config
     config = __config
-    import pulumi_f5os.region as __region
-    region = __region
 else:
     config = _utilities.lazy_import('pulumi_f5os.config')
-    region = _utilities.lazy_import('pulumi_f5os.region')
 
 _utilities.register(
     resource_modules="""
@@ -75,6 +75,22 @@ _utilities.register(
   "fqn": "pulumi_f5os",
   "classes": {
    "f5os:index/license:License": "License"
+  }
+ },
+ {
+  "pkg": "f5os",
+  "mod": "index/logging",
+  "fqn": "pulumi_f5os",
+  "classes": {
+   "f5os:index/logging:Logging": "Logging"
+  }
+ },
+ {
+  "pkg": "f5os",
+  "mod": "index/ntpServer",
+  "fqn": "pulumi_f5os",
+  "classes": {
+   "f5os:index/ntpServer:NtpServer": "NtpServer"
   }
  },
  {
