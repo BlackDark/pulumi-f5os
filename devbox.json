@@ -3,8 +3,8 @@
     "yarn@latest",
     "pulumictl@latest",
     "go@1.21.",
-    "nodejs@20.",
-    "python3@3.11.8",
+    "nodejs@24",
+    "python3@3.11",
     "dotnet-sdk@8.0.",
     "gradle_7@7.6",
     "curl@8"
