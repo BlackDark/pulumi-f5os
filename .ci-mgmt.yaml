@@ -52,4 +52,5 @@ publishRegistry: false
 # https://github.com/pulumi/ci-mgmt/blob/master/provider-ci/internal/pkg/templates/defaults.config.yaml
 
 toolVersions:
+  python: "3.11"
   pulumictl: "v0.0.48"
