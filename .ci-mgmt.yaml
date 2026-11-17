@@ -53,4 +53,5 @@ publishRegistry: false
 
 toolVersions:
   python: "3.11"
+  nodejs: "24"
   pulumictl: "v0.0.48"
